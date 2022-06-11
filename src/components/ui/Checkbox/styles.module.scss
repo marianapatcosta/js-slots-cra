@@ -1,0 +1,52 @@
+.checkbox {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: $font-x-small;
+  color: var(--color-font);
+  cursor: pointer;
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 1.35rem;
+    height: 1.35rem;
+    margin: 0.125rem;
+    margin-right: 0.5rem;
+    box-shadow: 0 0.063rem 0.25rem rgba($color-black, 0.5);
+    border-radius: 0.2rem;
+    border: 0.125rem solid $color-pink;
+    background-color: var(--color-primary);
+    transition: border 0.3s ease-in-out;
+    -webkit-transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    -moz-transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    -ms-transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    -o-transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    
+    :hover {
+      border-color: darken($color-pink, 20%);
+    }
+
+    svg {
+      width: 1.2rem;
+      height: 1.2rem;
+      fill: $color-blue;
+    }
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+
+    &:checked + .checkbox__toggle {
+      background-color: $color-pink;
+    }
+
+    &:disabled + .checkbox__toggle {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+  }
+}

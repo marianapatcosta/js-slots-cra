@@ -1,0 +1,58 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  padding: 0.2rem 0.3rem;
+  background: linear-gradient(to bottom, $color-pink, darken($color-pink, 20%));
+  border: 0.125rem solid $color-pink;
+  border-width: 0.2rem 0.2rem 0.25rem;
+  box-shadow: 0 0.125rem 0.2rem rgba($color-black, 0.5);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  transition: transform 0.2s ease-in-out;
+  -webkit-transition: transform 0.2s ease-in-out;
+  -moz-transition: transform 0.2s ease-in-out;
+  -ms-transition: transform 0.2s ease-in-out;
+  -o-transition: transform 0.2s ease-in-out;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -0.2rem;
+    left: -0.2rem;
+    height: 75%;
+    width: 120%;
+    border-radius: 0 0 25% 25%;
+    -webkit-border-radius: 0 0 25% 25%;
+    -moz-border-radius: 0 0 25% 25%;
+    -ms-border-radius: 0 0 25% 25%;
+    -o-border-radius: 0 0 25% 25%;
+    background: linear-gradient(to bottom, rgba($color-white, 0.6), rgba($color-white, 0.2));
+  }
+
+  &:hover {
+    transform: translateY(-0.1rem);
+    -webkit-transform: translateY(-0.1rem);
+    -moz-transform: translateY(-0.1rem);
+    -ms-transform: translateY(-0.1rem);
+    -o-transform: translateY(-0.1rem);
+  }
+
+  svg {
+    width: 85%;
+    height: 85%;
+    fill: $color-white;
+    stroke: $color-white;
+  }
+
+  &[disabled] {
+    pointer-events: none;
+  }
+}

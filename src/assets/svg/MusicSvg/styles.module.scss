@@ -1,0 +1,9 @@
+.icon {
+  rect {
+    transition: width 0.3s ease-in-out;
+  }
+ 
+  &__line--off {
+      width: 0%;
+  }
+}

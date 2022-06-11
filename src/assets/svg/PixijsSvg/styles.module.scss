@@ -1,0 +1,43 @@
+.icon {
+  &__dot {
+    transform-origin: bottom;
+    animation: bounce 3s linear infinite;
+
+    &:first-child {
+      animation-delay: 0.5s;
+    }
+  }
+
+  &__js {
+    animation: fall 2s linear infinite;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5rem);
+    -webkit-transform: translateY(-5rem);
+    -moz-transform: translateY(-5rem);
+    -ms-transform: translateY(-5rem);
+    -o-transform: translateY(-5rem);
+  }
+  60% {
+    transform: translateY(-3rem);
+  }
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-15rem);
+  }
+  10% {
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,17 @@
+.icon {
+  rect {
+    transition: width 0.3s ease-in-out;
+  }
+
+  path {
+    transition: transform 0.5s ease-in-out 0.3s;
+  }
+
+  &__wave--off {
+    transform: translate(0, 20%) scale(0.3, 0.5) ;
+  }
+ 
+  &__line--off {
+      width: 0%;
+  }
+}

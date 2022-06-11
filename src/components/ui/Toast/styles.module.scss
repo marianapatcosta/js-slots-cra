@@ -1,0 +1,71 @@
+.toast {
+  box-shadow: 0 0.125rem 0.5rem rgba($color-black, 0.7);
+  width: 22rem;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 1rem;
+  margin: auto;
+  padding: 1rem;
+  z-index: 30;
+  border-radius: 0.25rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+  
+  &--alert {
+    background-color: $color-red;
+  }
+
+  &--info {
+    background-color: $color-blue;
+  }
+  &--success {
+    background-color: $color-green;
+  }
+
+  &--warning {
+    background-color: $color-yellow;
+  }
+
+  &__close {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    color: $color-white;
+
+    &:hover {
+      transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+    font-size: $font-small;
+    color: $color-white;
+    margin-top: 0.5rem;
+
+    p {
+      white-space: pre-line;
+      margin-left: 0.5rem;
+    }
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      fill: $color-white;
+    }
+  }
+}

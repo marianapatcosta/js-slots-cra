@@ -1,0 +1,105 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: 0.125rem solid $color-orange;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-primary);
+  color: var(--color-font);
+  font-family: $font-primary;
+  font-size: $font-small;
+  position: relative;
+
+  &--loading {
+    visibility: hidden;
+  }
+
+  main {
+    margin: 0 auto;
+    overflow-y: auto;
+    width: 100%;
+    z-index: 1;
+  }
+}
+
+.toast {
+  &-enter {
+    opacity: 0;
+  }
+
+  &-enter-active {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+    -webkit-transition: opacity 0.3s ease-in;
+    -moz-transition: opacity 0.3s ease-in;
+    -ms-transition: opacity 0.3s ease-in;
+    -o-transition: opacity 0.3s ease-in;
+  }
+
+  &-exit {
+    opacity: 0;
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    -webkit-transition: opacity 0.3s ease-out;
+    -moz-transition: opacity 0.3s ease-out;
+    -ms-transition: opacity 0.3s ease-out;
+    -o-transition: opacity 0.3s ease-out;
+  }
+}
+
+@media only screen and (min-width: $xs) {
+  .app {
+    font-size: $font-base;
+
+    &:before {
+      content: '';
+      background-image: url('/assets/images/background.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.2;
+      filter: var(--color-filter);
+      -webkit-filter: var(--color-filter);
+    }
+  }
+}

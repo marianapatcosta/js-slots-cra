@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'Work Sans';
+  src: url('../fonts/NotoSerif-Bold.ttf') format('ttf'),
+    url('../fonts/NotoSerif-BoldItalic.ttf') format('ttf'),
+    url('../fonts/NotoSerif-Italic.ttf') format('ttf'),
+    url('../fonts/NotoSerif-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Noto Serif';
+  src: url('../fonts/WorkSans-Bold.ttf') format('ttf'),
+    url('../fonts/WorkSans-BoldItalic.ttf') format('ttf'),
+    url('../fonts/WorkSans-Italic.ttf') format('ttf'),
+    url('../fonts/WorkSans-Regular.ttf') format('ttf');
+}
+
+// family
+$font-primary: 'Work Sans', sans-serif;
+$font-title: 'Noto Serif', serif;
+
+// sizes
+$font-base: 0.9rem;
+$font-x-small: 0.75rem;
+$font-small: 0.85rem;
+$font-medium: 1.15rem;
+$font-large: 1.4rem;
+$font-x-large: 2rem;
+$font-huge: 2.5rem;

@@ -1,0 +1,29 @@
+.icon {
+  path {
+    &:nth-child(2) {
+      animation: fade 3s linear alternate infinite;
+    }
+
+    &:last-child {
+      animation: enter 2s linear alternate infinite;
+    }
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes enter {
+  0% {
+    transform: translateX(-10rem);
+  }
+  30% {
+    transform: translateX(0);
+  }
+}

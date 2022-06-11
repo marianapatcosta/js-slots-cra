@@ -1,0 +1,30 @@
+.icon {
+  path {
+    transform-origin: bottom;
+    animation: grow 3s linear infinite;
+
+    &:first-child {
+      animation: grow-small 3s linear infinite;
+      -webkit-animation: grow-small 3s linear infinite;
+    }
+  }
+}
+
+@keyframes grow {
+  0%,
+  20% {
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1);
+  }
+}
+
+@keyframes grow-small {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+}

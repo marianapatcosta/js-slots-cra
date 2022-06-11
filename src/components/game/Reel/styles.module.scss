@@ -1,0 +1,52 @@
+.reel {
+  background-color: var(--color-secondary);
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+  overflow: hidden;
+  height: calc($symbol-size-small * $rows-number);
+  box-shadow: 0.1rem 0.1rem 0.3rem rgba($color-black, 0.7);
+  position: relative;
+  min-width: $symbol-size-small;
+
+  &:first-child {
+    transform: rotate(-1.5deg);
+    -webkit-transform: rotate(-1.5deg);
+    -moz-transform: rotate(-1.5deg);
+    -ms-transform: rotate(-1.5deg);
+    -o-transform: rotate(-1.5deg);
+  }
+
+  &:nth-child(2) {
+    transform: rotate(-0.5deg);
+    -webkit-transform: rotate(-0.5deg);
+    -moz-transform: rotate(-0.5deg);
+    -ms-transform: rotate(-0.5deg);
+    -o-transform: rotate(-0.5deg);
+  }
+
+  &:nth-child(4) {
+    transform: rotate(0.5deg);
+    -webkit-transform: rotate(0.5deg);
+    -moz-transform: rotate(0.5deg);
+    -ms-transform: rotate(0.5deg);
+    -o-transform: rotate(0.5deg);
+  }
+
+  &:nth-child(5) {
+    transform: rotate(1.5deg);
+    -webkit-transform: rotate(1.5deg);
+    -moz-transform: rotate(1.5deg);
+    -ms-transform: rotate(1.5deg);
+    -o-transform: rotate(1.5deg);
+  }
+}
+
+@media only screen and (min-width: $xs) {
+  .reel {
+    height: calc($symbol-size * $rows-number);
+    min-width: $symbol-size;
+  }
+}

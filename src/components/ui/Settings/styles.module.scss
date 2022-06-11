@@ -1,0 +1,25 @@
+.settings {
+  padding: 2rem 5rem 3rem;
+  min-width: 20rem;
+
+  &__select {
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.7rem;
+
+    // for safari below 14.1 that not supports gap with flexbox
+    @media not all and (min-resolution: 0.001dpcm) {
+      @supports (-webkit-appearance: none) {
+        margin: -0.35rem;
+        & > * {
+          margin: 0.35rem;
+        }
+      }
+    }
+  }
+}

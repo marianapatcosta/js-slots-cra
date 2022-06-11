@@ -1,0 +1,16 @@
+.icon {
+  path {
+    transform-origin: center;
+    animation: scale 3s linear infinite;
+    -webkit-animation: scale 3s linear infinite;
+  }
+}
+
+@keyframes scale {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}

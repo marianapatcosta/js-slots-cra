@@ -1,0 +1,19 @@
+.icon {
+  width: 15rem;
+  height: 15rem;
+  transform-origin: bottom;
+  animation: step 3s linear alternate infinite;
+}
+
+@keyframes step {
+  0%,
+  30%,
+  60% {
+    transform: rotate(0);
+  }
+  10%,
+  40%,
+  70% {
+    transform: rotate(15deg);
+  }
+}

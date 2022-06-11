@@ -1,0 +1,34 @@
+.about {
+  padding: 2rem 1rem 3rem;
+  width: 95%;
+  min-width: 20rem;
+  height: auto;
+  overflow: auto;
+  font-size: $font-small;
+  line-height: 1.15rem;
+  flex: 1;
+
+  h2 {
+    font-family: $font-title;
+    font-size: $font-medium;
+    margin: 0.5rem 0;
+  }
+
+  h3 {
+    font-family: $font-title;
+    font-size: $font-base;
+  }
+
+  &__symbol {
+    display: grid;
+    grid: min-content / 4rem 1fr;
+    column-gap: 0.5rem;
+    margin: 0.5rem 0 1rem;
+  }
+}
+
+@media only screen and (min-width: $xs) {
+  .about {
+    max-width: 25rem;
+  }
+}

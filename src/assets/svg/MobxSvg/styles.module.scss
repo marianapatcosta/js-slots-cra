@@ -1,0 +1,53 @@
+.icon {
+  path:first-child {
+    animation: moveToRight 2s linear alternate infinite;
+  }
+
+  path:nth-child(2) {
+    animation: moveToLeft 2s linear alternate infinite;
+  }
+
+  path:nth-child(3) {
+    animation: moveToTop 2s linear alternate infinite;
+  }
+
+  path:nth-child(4) {
+    animation: moveToBottom 2s linear alternate infinite;
+  }
+}
+
+@keyframes moveToTop {
+  0% {
+    transform: translateY(-10rem);
+  }
+  27% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes moveToBottom {
+  0% {
+    transform: translateY(10rem);
+  }
+  27% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes moveToRight {
+  0% {
+    transform: translateX(10rem);
+  }
+  30% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveToLeft {
+  0% {
+    transform: translateX(-10rem);
+  }
+  30% {
+    transform: translateX(0);
+  }
+}

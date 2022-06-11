@@ -1,0 +1,87 @@
+.slot {
+  background-color: $color-blue;
+  border-radius: 1rem;
+  display: inline-flex;
+  padding: 0.4rem 0.3rem;
+  width: max-content;
+  position: relative;
+
+  &__letter {
+    background-color: var(--color-primary);
+    color: $color-pink;
+    font-weight: 700;
+    font-size: $font-small;
+    padding: 0.8rem 0.25rem;
+    margin: 0 0.2rem;
+    text-transform: uppercase;
+    text-align: center;
+    display: inline-table;
+    border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    -ms-border-radius: 0.25rem;
+    -o-border-radius: 0.25rem;
+  }
+
+  &__adapter {
+    position: absolute;
+    background-color: $color-blue;
+    right: -0.5rem;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    width: 0.6rem;
+    height: 2.3rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.05rem 0.15rem rgba($color-black, 0.7);
+  }
+
+  &__handler {
+    position: absolute;
+    background-color: $color-blue;
+    right: -1.1rem;
+    top: -10%;
+    width: 0.34rem;
+    height: 2.2rem;
+    border-radius: 0.25rem;
+    transform: rotate(30deg);
+    -webkit-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+    box-shadow: 0 0.05rem 0.15rem rgba($color-black, 0.7);
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 0.8rem;
+      height: 0.36rem;
+      bottom: 0;
+      right: 0;
+      background-color: $color-blue;
+      border-radius: 0.25rem;
+      -webkit-border-radius: 0.25rem;
+      -moz-border-radius: 0.25rem;
+      -ms-border-radius: 0.25rem;
+      -o-border-radius: 0.25rem;
+      transform: rotate(30deg);
+      -webkit-transform: rotate(30deg);
+      -moz-transform: rotate(30deg);
+      -ms-transform: rotate(30deg);
+      -o-transform: rotate(30deg);
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 0.9rem;
+      height: 0.8rem;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: $color-pink;
+      border-radius: 50%;
+      box-shadow: 0 0.125rem 0.5rem rgba($color-black, 0.7);
+    }
+  }
+}
