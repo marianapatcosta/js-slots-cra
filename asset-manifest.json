@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a9998b15.css",
+    "main.js": "/static/js/main.3ce11537.js",
+    "static/media/mixkit-retro-arcade-casino-notification-211.wav": "/static/media/mixkit-retro-arcade-casino-notification-211.a6251be4db4ddd9c584d.wav",
+    "static/media/mixkit-slot-machine-win-alert-1931.wav": "/static/media/mixkit-slot-machine-win-alert-1931.6cd1ae7021dc6c8692d7.wav",
+    "static/media/NotoSerif-Bold.ttf": "/static/media/NotoSerif-Bold.0aacbc832fb391fc6a04.ttf",
+    "static/media/NotoSerif-Regular.ttf": "/static/media/NotoSerif-Regular.f137c7ae4fdb27744a29.ttf",
+    "static/media/NotoSerif-BoldItalic.ttf": "/static/media/NotoSerif-BoldItalic.6f32e263f69d8e4b6a27.ttf",
+    "static/media/NotoSerif-Italic.ttf": "/static/media/NotoSerif-Italic.1e82b5d859a211c6890f.ttf",
+    "static/media/mixkit-slot-machine-wheel-1932.wav": "/static/media/mixkit-slot-machine-wheel-1932.068a2f6823e75f194f46.wav",
+    "static/media/music-box-monster.mp3": "/static/media/music-box-monster.1efc4a90ecf6682558fb.mp3",
+    "static/media/mixkit-retro-arcade-lose-2027.wav": "/static/media/mixkit-retro-arcade-lose-2027.ecae68bcf35952e635c1.wav",
+    "static/media/mixkit-coins-handling.wav": "/static/media/mixkit-coins-handling.f4432414b831e2dded92.wav",
+    "static/media/mixkit-select-click-1109.wav": "/static/media/mixkit-select-click-1109.2604a56c761e9cbfc005.wav",
+    "static/media/WorkSans-Bold.ttf": "/static/media/WorkSans-Bold.2bea7a7f7d052c74da25.ttf",
+    "static/media/WorkSans-Regular.ttf": "/static/media/WorkSans-Regular.bb287b894b27372d8ea7.ttf",
+    "static/media/WorkSans-BoldItalic.ttf": "/static/media/WorkSans-BoldItalic.469f1a2f8e197cac1093.ttf",
+    "static/media/WorkSans-Italic.ttf": "/static/media/WorkSans-Italic.0189dd75c4a5c973846d.ttf",
+    "static/media/background.svg": "/static/media/background.51cd5a6ff2c99c32b3a3.svg",
+    "service-worker.js": "/service-worker.js",
+    "static/media/mixkit-plastic-bubble-click-1124.wav": "/static/media/mixkit-plastic-bubble-click-1124.f490b8904d3591f3bba9.wav",
+    "index.html": "/index.html",
+    "main.a9998b15.css.map": "/static/css/main.a9998b15.css.map",
+    "main.3ce11537.js.map": "/static/js/main.3ce11537.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a9998b15.css",
+    "static/js/main.3ce11537.js"
+  ]
+}
