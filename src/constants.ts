@@ -11,7 +11,6 @@ export const LOCALES_DATA: InputData[] = [
   { value: Locale.PT, caption: 'settings.portuguese' },
 ];
 
-// TODO update url after deployed
-export const JS_SLOTS_URL = 'https://js-slots.com';
+export const JS_SLOTS_URL = 'https://marianapatcosta.github.io/js-slots-cra/';
 
 export const LOADING_TIME: number = 3000; // in milliseconds

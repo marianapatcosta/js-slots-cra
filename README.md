@@ -23,6 +23,10 @@ Build a production-ready application.
 
 Run linter command.
 
+### `yarn validate-ts`
+
+Runs TypeScript validatior
+
 ### `yarn gen-scss-types`
 
 Runs typed-scss-modules and generates types for scss modules, keeping the namespace using BEM css methodology

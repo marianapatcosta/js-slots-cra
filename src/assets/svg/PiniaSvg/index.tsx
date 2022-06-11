@@ -11,7 +11,6 @@ const PiniaSvg: React.FC<SymbolSvgProps> = ({ animate }) => {
       width="50"
       height="50"
       xmlns="http://www.w3.org/2000/svg"
-      className={animate ? styles.icon : ''}
     >
       <linearGradient id="a">
         <stop stopColor="#52ce63" offset="0" />

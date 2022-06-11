@@ -8,7 +8,6 @@ const ViteSvg: React.FC<SymbolSvgProps> = ({ animate }) => {
   return (
     <svg
       aria-hidden={true}
-      className={animate ? styles.icon : ''}
       width="50"
       height="50"
       fill="none"
