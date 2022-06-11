@@ -26,7 +26,10 @@ jobs:
       - name: Run Cypress tests
         uses: cypress-io/github-action@v4
         with:
+          start: yarn start
           browser: chrome
+          wait-on: "http://localhost:3000"
+          headless: true
       - name: Build app
         run: yarn build
       - name: Deploy to gh-pages
