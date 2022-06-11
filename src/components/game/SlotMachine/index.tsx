@@ -2,12 +2,7 @@ import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { Controllers, Reels, WinsDisplay } from '@/components';
-import {
-  ANIMATE_RESULTS_DURATION,
-  ROW_NUMBER,
-  SYMBOL_SIZE,
-  SYMBOL_SIZE_SMALL,
-} from '@/game-configs';
+import { ANIMATE_RESULTS_DURATION, ROW_NUMBER } from '@/game-configs';
 import { ModalType, SlotScreenResult, Symbol } from '@/types';
 import {
   SPIN_ENDED,
@@ -26,7 +21,7 @@ import {
 import { State } from '@/store/types';
 import { ModalContext, ModalContextData } from '@/context/ModalContext';
 import { LoseSound, SlotWheelSound, ThemeSound, WinSound } from '@/assets/sounds';
-import { deepClone, getRandomNumber } from '@/utils';
+import { getRandomNumber } from '@/utils';
 import { ReelsContext } from '@/context/ReelsContext';
 import styles from './styles.module.scss';
 import { useSymbolSize } from '@/hooks';
@@ -161,6 +156,7 @@ const SlotMachine: React.FC = () => {
     return () => {
       dispatch({ type: GAME_LEFT });
     };
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

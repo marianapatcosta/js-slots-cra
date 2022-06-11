@@ -61,7 +61,7 @@ const App = () => {
   const addToast = (newToast: ToastData): void => setToastData(prevData => [...prevData, newToast]);
   const removeToast = (toastIndex: number): void =>
     setToastData(prevData => prevData.filter((_, index) => index !== toastIndex));
-  const toastListRef = useRef<HTMLDivElement>(null);
+  // const toastListRef = useRef<HTMLDivElement>(null);
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const onLoadEnd = (): void => setIsLoading(false);

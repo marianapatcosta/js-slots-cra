@@ -13,6 +13,7 @@ export const useSymbolSize = (): number => {
     if (window.matchMedia('(min-width: 480px)').matches && symbolSize !== SYMBOL_SIZE) {
       setSymbolSize(SYMBOL_SIZE);
     }
+    // eslint-disable-next-line
   }, [windowWidth]);
 
   return symbolSize;
