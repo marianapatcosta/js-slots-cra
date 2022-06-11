@@ -19,6 +19,8 @@ jobs:
         run: yarn install
       - name: Validate typescript
         run: yarn validate-ts
+      - name: Run linter
+        run: yarn lint
       - name: Run unit tests
         run: yarn test:unit
       - name: Build app

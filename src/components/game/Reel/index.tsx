@@ -71,6 +71,7 @@ const Reel: React.FC<ReelProps> = ({ symbols: reel, reelIndex, animationDuration
     return () => {
       spinAnimation?.kill();
     };
+    // eslint-disable-next-line
   }, []);
 
   return (
