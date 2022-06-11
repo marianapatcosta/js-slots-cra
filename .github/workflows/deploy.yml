@@ -23,6 +23,10 @@ jobs:
         run: yarn lint
       - name: Run unit tests
         run: yarn test:unit
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v4
+        with:
+          browser: chrome
       - name: Build app
         run: yarn build
       - name: Deploy to gh-pages
