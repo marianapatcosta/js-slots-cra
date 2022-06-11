@@ -1,0 +1,115 @@
+.modal {
+  &__overlay {
+    display: flex;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0rem;
+    width: 100vw;
+    z-index: 100;
+    background-color: rgba($color-black, 0.5);
+
+    &-enter-active .modal__content {
+      opacity: 0;
+      top: -50rem;
+    }
+
+    &-enter-done .modal__content {
+      opacity: 1;
+      top: 0;
+      transition: opacity 0.3s ease-in, top 0.3s ease-in;
+      -webkit-transition: opacity 0.3s ease-in, top 0.3s ease-in;
+      -moz-transition: opacity 0.3s ease-in, top 0.3s ease-in;
+      -ms-transition: opacity 0.3s ease-in, top 0.3s ease-in;
+      -o-transition: opacity 0.3s ease-in, top 0.3s ease-in;
+    }
+
+    &-exit-active .modal__content {
+      opacity: 0;
+      top: -50rem;
+      transition: opacity 0.3s ease-out, top 0.3s ease-out;
+      -webkit-transition: opacity 0.3s ease-out, top 0.3s ease-out;
+      -moz-transition: opacity 0.3s ease-out, top 0.3s ease-out;
+      -ms-transition: opacity 0.3s ease-out, top 0.3s ease-out;
+      -o-transition: opacity 0.3s ease-out, top 0.3s ease-out;
+    }
+  }
+
+  &__content {
+    background-color: var(--color-primary);
+    box-shadow: 0 0.125rem 0.5rem rgba($color-black, 0.7);
+    margin: auto;
+    border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    -ms-border-radius: 0.25rem;
+    -o-border-radius: 0.25rem;
+    color: var(--color-font);
+    font-family: $font-primary;
+    width: 90%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: max-content;
+    max-height: 80vh;
+    left: 0;
+    right: 0;
+  }
+
+  &__header {
+    font-family: $font-title;
+    font-size: $font-large;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.625rem;
+    position: relative;
+
+    & > div {
+      position: absolute;
+      top: -1.5rem;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
+
+    button {
+      position: absolute;
+      right: -1rem;
+      top: -1rem;
+
+      &:hover {
+        svg {
+          transform: rotate(90deg);
+          -webkit-transform: rotate(90deg);
+          -moz-transform: rotate(90deg);
+          -ms-transform: rotate(90deg);
+          -o-transform: rotate(90deg);
+          transition: transform 0.2s ease-in-out;
+          -webkit-transition: transform 0.2s ease-in-out;
+          -moz-transition: transform 0.2s ease-in-out;
+          -ms-transition: transform 0.2s ease-in-out;
+          -o-transition: transform 0.2s ease-in-out;
+        }
+      }
+    }
+  }
+
+  &__main {
+    display: flex;
+    max-height: 30rem;
+    overflow: hidden;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (min-width: $xs) {
+  .modal {
+    &__content {
+      width: max-content;
+    }
+  }
+}

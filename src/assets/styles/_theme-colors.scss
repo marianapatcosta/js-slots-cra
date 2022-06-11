@@ -1,0 +1,39 @@
+:root {
+  --color-primary: #ffffff;
+  --color-secondary: #f6f8f9;
+  --color-tertiary: #d8d8d8;
+  --color-font: #0f1324;
+  --color-filter: none;
+  --color-neon-text-shadow: none;
+  --color-neon-text: #37a8ee;
+}
+
+[theme='dark'] {
+  --color-primary: #06080f;
+  --color-secondary: #0d1122;
+  --color-tertiary: #141a32;
+  --color-font: #ffffff;
+  --color-filter: invert(100%) sepia(4%) saturate(5781%) hue-rotate(6deg) brightness(118%)
+    contrast(87%);
+  --color-neon-text-shadow: 0 0 0.5rem #ffffff, 0 0 0.625rem #fff, 0 0 1.312rem #ffffff,
+    0 0 2.625rem #37a8ee, 0 0 5.125rem #37a8ee, 0 0 5.75rem #37a8ee, 0 0 6.375rem #37a8ee,
+    0 0 9.437rem #37a8ee;
+  --color-neon-text: #ffffff;
+}
+
+$color-black: #000000;
+$color-blue: #37a8ee;
+$color-dark-blue: #124c7c;
+$color-dark-grey: #2c2e30;
+$color-green: #008000;
+$color-light-green: #80ca80;
+$color-grey: #d8d8d8;
+$color-light-grey: #f6f8f9;
+$color-red: #ff0000;
+$color-dark-red: #b33030;
+$color-transparent: Transparent;
+$color-white: #ffffff;
+$color-yellow: #f1c40f;
+$color-purple: #3f1347;
+$color-pink: #fe4495;
+$color-orange: #fd891c;

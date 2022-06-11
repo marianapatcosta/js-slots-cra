@@ -1,0 +1,56 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-secondary);
+  padding: 1rem 0 0.7rem;
+  box-shadow: 0 0.4rem 0.5rem 0.3rem rgba($color-black, 0.5);
+  z-index: 1;
+
+  p {
+    font-style: italic;
+    font-size: $font-x-small;
+    font-weight: 700;
+    margin-right: 0.5rem;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    // for safari below 14.1 that not supports gap with flexbox
+    @media not all and (min-resolution: 0.001dpcm) {
+      @supports (-webkit-appearance: none) {
+        margin: -0.335rem;
+        & > * {
+          margin: 0.25rem;
+        }
+      }
+    }
+
+    a {
+      line-height: 85%;
+      transition: transform 0.2s ease-in-out;
+      -webkit-transition: transform 0.2s ease-in-out;
+      -moz-transition: transform 0.2s ease-in-out;
+      -ms-transition: transform 0.2s ease-in-out;
+      -o-transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        transform: translateY(-0.1rem);
+        -webkit-transform: translateY(-0.1rem);
+        -moz-transform: translateY(-0.1rem);
+        -ms-transform: translateY(-0.1rem);
+        -o-transform: translateY(-0.1rem);
+      }
+
+      svg {
+        width: 1.1rem;
+        height: 1.1rem;
+        fill: var(--color-font);
+        stroke: var(--color-font);
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.icon {
+
+  path:nth-child(1n) {
+    animation: sparkle 0.2s linear infinite alternate;
+  }
+
+  path:nth-child(3n) {
+    animation: sparkle 0.2s 0.6s linear infinite alternate;
+  }
+
+  path:first-child {
+    animation: none;
+  }
+}
+
+@keyframes sparkle {
+  100% {
+    fill: #b0e0e6;
+  }
+}

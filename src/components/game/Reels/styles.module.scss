@@ -1,0 +1,26 @@
+@mixin reels-width($symbol-size) {
+  width: calc($reels-number * $symbol-size + $reels-padding * 2 + $reels-gap * ($reels-number - 1));
+}
+
+.reels {
+  @include reels-width($symbol-size-small);
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat($reels-number, 1fr);
+  column-gap: $reels-gap;
+  padding: 0.625rem;
+  height: calc($rows-number * $symbol-size-small + $reels-padding * 2);
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+  background: linear-gradient(to bottom, $color-pink, $color-blue);
+}
+
+@media only screen and (min-width: $xs) {
+  .reels {
+    @include reels-width($symbol-size);
+    height: calc($rows-number * $symbol-size + $reels-padding * 2);
+  }
+}

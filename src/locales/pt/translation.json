@@ -1,0 +1,75 @@
+{
+  "about": {
+    "description": "JS Slots Machine segue as regras dos jogos slot tradicionais, i.e, os símbolos do jogo rodam e depois o verifica-se se existem coombinações de 3 ou mais símbolos iguais numa das 9 linhas de pagamento existentes.",
+    "specialSymbols": "Símbolos especiais",
+    "explosive": "Explosivo",
+    "explosiveDescription": "A lado negativo do jogo: Uma linha de 3 ou mais símbolos Explosivos créditos.",
+    "scatter": "Scatter",
+    "scatterDescription": "Uma linha de 3 ou mais símbolos Scatter oferece 10 rodadas grátis.",
+    "wildcard": "WildCard",
+    "wildcardDescription": "O símbolo WildCard pode tomar a posição de qualquer outro símbolo do jogo, aumentando as chances de vitórias. No final de cada rodada, há a hipótese de ganhar wildcards extra.",
+    "title": "Info"
+  },
+  "controllers": {
+    "autoSpin": "Auto Spin",
+    "bet": "Aposta",
+    "changeBet": "Altere a aposta.",
+    "checkInfo": "Clique para saber mais sobre este jogo.",
+    "checkSettings": "clique para ver e alterar as definições do jogo.",
+    "payLines": "Linhas",
+    "spin": "Spin"
+  },
+  "header": {
+    "copiedToClipboard": "Copiado para o clipboard.",
+    "share": "Partilhar JS Slots",
+    "shareError": "Não foi possível partilhar o link",
+    "shareTitle": "Vê este jogo nerd - JS Slots!!!",
+    "shareText": "Este é o link para o jogo JS Slots",
+    "welcome": "Vamos jogar a slot machine mais nerd de sempre!!!"
+  },
+  "footer": {
+    "developedBy": "Desenvolvido por {{name}}",
+    "findMe": "Encontre-me no {{link}}",
+    "personalWebsite": "Website Pessoal"
+  },
+  "global": {
+    "anErrorOccurred": "Ocorreu um erro!",
+    "close": "Clique para fechar o modal.",
+    "disable": "disactivar",
+    "enable": "activar",
+    "loading": "a carregar",
+    "no": "Não",
+    "offline": "Está offline!",
+    "ok": "OK",
+    "toastDismiss": "Clique para fechar a mensagem.",
+    "yes": "Sim"
+  },
+  "reset": {
+    "clickDeclineDiscard": "Clique em 'Não' para continuar o jogo JS Slots iniciado.",
+    "clickDiscard": "Clique em '{{buttonLabel}}' para descartar o jogo JS Slots iniciado e começar um novo jogo.",
+    "description": "Permite que o jogador escolha se quer ou não iniciar um novo jogo.",
+    "doNotShowAgain": "Não mostrar esta mensagem novamente",
+    "resetGame": "Tem um jogo já iniciado. Pretende descartá-lo?",
+    "resetGameNoCredits": "Ficou sem créditos. Pretence começar um novo jogo?",
+    "title": "Descartar"
+  },
+  "settings": {
+    "changeDarkMode": "Clique para {{status}} o modo escuro.",
+    "changeLanguage": "Clique para alterar o idioma do jogo.",
+    "changeMusicStatus": "Clique para {{status}} a musica do jogo.",
+    "changeSoundsStatus": "Clique para {{status}} os sons do jogo.",
+    "description": "Define as configurações do utilizador.",
+    "mute": "silenciar",
+    "english": "inglês",
+    "language": "Idioma",
+    "portuguese": "Português",
+    "title": "Definições",
+    "unmute": "activar"
+  },
+  "slot": {
+    "credits": "Créditos",
+    "creditsDescription": "Tem {{credits}} créditos.",
+    "freeSpins": "Rodadas grátis",
+    "freeSpinsDescription": "Tem {{freeSpins}} rodadas grátis."
+  }
+}
