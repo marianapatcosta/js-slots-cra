@@ -13,10 +13,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
       - name: Install Packages
-        run: yarn install
+        run: yarn install --ignore-engines
       - name: Validate typescript
         run: yarn validate-ts
       - name: Run unit tests
