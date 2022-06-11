@@ -1,8 +1,6 @@
 .icon {
-  
   &__leaves {
-     animation: shake-all 1s linear infinite alternate;
-
+    animation: shake-all 1s linear infinite alternate;
 
     path:last-child {
       animation: shake-middle 0.6s linear infinite alternate;

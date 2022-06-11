@@ -1,28 +1,27 @@
 .icon {
- &__sun {
-  opacity: 1;
-  transform: translateY(0) rotateZ(0deg);
-  transition: all 1s ease-out;
-
-  &--dark {
-    opacity: 0;
-    transform: translateY(20%) rotateZ(100deg);
-    -webkit-transform: translateY(20%) rotateZ(100deg);
-    -moz-transform: translateY(20%) rotateZ(100deg);
-    -ms-transform: translateY(20%) rotateZ(100deg);
-    -o-transform: translateY(20%) rotateZ(100deg);
-}
-}
-
-&__moon {
-  opacity: 0;
-  transform: translate(100%,20%) rotateZ(50deg);
-  transition: all 1s ease-out;
-
-
-  &--dark {
+  &__sun {
     opacity: 1;
-    transform: translate(15%, 15%) rotateZ(0deg);
+    transform: translateY(0) rotateZ(0deg);
+    transition: all 1s ease-out;
+
+    &--dark {
+      opacity: 0;
+      transform: translateY(20%) rotateZ(100deg);
+      -webkit-transform: translateY(20%) rotateZ(100deg);
+      -moz-transform: translateY(20%) rotateZ(100deg);
+      -ms-transform: translateY(20%) rotateZ(100deg);
+      -o-transform: translateY(20%) rotateZ(100deg);
+    }
   }
- }
+
+  &__moon {
+    opacity: 0;
+    transform: translate(100%, 20%) rotateZ(50deg);
+    transition: all 1s ease-out;
+
+    &--dark {
+      opacity: 1;
+      transform: translate(15%, 15%) rotateZ(0deg);
+    }
+  }
 }

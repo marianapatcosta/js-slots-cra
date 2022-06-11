@@ -10,7 +10,6 @@ const PixijsSvg: React.FC<SymbolSvgProps> = ({ animate }) => {
       aria-hidden={true}
       width="50"
       height="50"
-      className={animate ? styles.icon : ''}
       viewBox="0 0 337 116"
       xmlns="http://www.w3.org/2000/svg"
     >

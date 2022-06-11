@@ -1,9 +1,11 @@
 {
   "name": "js-slot-machine",
   "version": "0.1.0",
+  "homepage": "js-slots-cra",
   "private": true,
   "dependencies": {
     "craco": "^0.0.3",
+    "gh-pages": "^4.0.0",
     "gsap": "^3.10.4",
     "i18next": "^21.8.8",
     "nanoid": "^3.3.4",
@@ -32,9 +34,12 @@
     "start": "craco start",
     "build": "craco build",
     "lint": "eslint --max-warnings=0 src",
+    "validate-ts": "tsc --project ./tsconfig.json",
     "test:unit": "craco test",
     "test:unit-coverage": "yarn test:unit -- --env=jsdom --coverage",
+    "test:e2e": "cypress open",
     "gen-scss-types": "typed-scss-modules src --additionalData \"@import './assets/styles/_index.scss';\" --nameFormat none --exportType default",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -64,6 +69,7 @@
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
     "@types/react-transition-group": "^4.4.4",
+    "cypress": "^10.1.0",
     "sass": "^1.52.2",
     "ts-jest": "^28.0.4",
     "typed-scss-modules": "^6.5.0"
