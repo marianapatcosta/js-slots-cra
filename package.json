@@ -36,7 +36,7 @@
     "lint": "eslint --max-warnings=0 src",
     "validate-ts": "tsc --project ./tsconfig.json",
     "test:unit": "craco test",
-    "test:unit-coverage": "craco test:unit -- --env=jsdom --coverage",
+    "test:unit-coverage": "yarn test:unit --watchAll --env=jsdom --coverage",
     "test:e2e": "cypress open",
     "gen-scss-types": "typed-scss-modules src --additionalData \"@import './assets/styles/_index.scss';\" --nameFormat none --exportType default",
     "deploy": "gh-pages -d build",
@@ -63,6 +63,7 @@
   "devDependencies": {
     "@cypress/react": "^5.12.5",
     "@cypress/webpack-dev-server": "^1.8.4",
+    "@cypress/webpack-preprocessor": "^5.12.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.2.0",

@@ -5,8 +5,6 @@ export const THEME_CHANGED = 'themeChanged';
 export const LANGUAGE_CHANGED = 'languageChanged';
 
 // SLOT MACHINE
-export const CREDITS_DECREASED = 'creditsDecreased';
-export const CREDITS_INCREASED = 'creditsIncreased';
 export const BET_UPDATED = 'betUpdated';
 export const SPAN = 'span';
 export const SPIN_ENDED = 'spinEnded';

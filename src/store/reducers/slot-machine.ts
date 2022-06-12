@@ -3,8 +3,6 @@ import { PayLine, Position, SlotScreenResult } from '@/types';
 import {
   AUTO_SPIN_STATE_CHANGED,
   SHOW_PAY_LINES_STATE_CHANGED,
-  CREDITS_DECREASED,
-  CREDITS_INCREASED,
   GAME_RESET,
   SPAN,
   SPIN_ENDED,
@@ -44,8 +42,6 @@ const initialState: State = {
 };
 
 export type Action =
-  | { type: typeof CREDITS_DECREASED; payload: number }
-  | { type: typeof CREDITS_INCREASED; payload: number }
   | { type: typeof BET_UPDATED; payload: number }
   | { type: typeof SPAN }
   | { type: typeof SPIN_ENDED; payload: SlotScreenResult }
@@ -59,17 +55,11 @@ export type Action =
 
 export const reducer = (state = initialState, action: Action): State => {
   switch (action.type) {
-    case CREDITS_DECREASED:
-      return {
-        ...state,
-        credits: state.credits - action.payload,
-      };
-    case CREDITS_INCREASED:
-      return {
-        ...state,
-        credits: state.credits + action.payload,
-      };
     case BET_UPDATED:
+      if (action.payload > state.credits) {
+        return state;
+      }
+
       return {
         ...state,
         bet: action.payload,
