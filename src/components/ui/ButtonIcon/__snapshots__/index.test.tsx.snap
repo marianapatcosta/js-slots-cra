@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonIcon renders without errors and matches snapshot 1`] = `
+<button
+  class="button "
+>
+  <svg
+    aria-hidden="true"
+    data-testid="button-icon"
+    height="50"
+    viewBox="-11.5 -10.232 23 20.463"
+    width="50"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      fill="#61dafb"
+      r="2.05"
+    />
+    <g
+      fill="none"
+      stroke="#61dafb"
+    >
+      <ellipse
+        id="e1"
+        rx="11"
+        ry="4.2"
+      />
+      <ellipse
+        rx="11"
+        ry="4.2"
+        transform="rotate(60)"
+      />
+      <ellipse
+        rx="11"
+        ry="4.2"
+        transform="rotate(120)"
+      />
+    </g>
+  </svg>
+</button>
+`;

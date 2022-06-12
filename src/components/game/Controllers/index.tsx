@@ -77,7 +77,7 @@ const Controllers: React.FC<ControllersProps> = ({ isSpinning, onSpin }) => {
   );
 
   return (
-    <div className={styles.controllers}>
+    <div className={styles.controllers} data-cy="controllers">
       <div className={styles['controllers__settings']}>
         <ButtonIcon
           icon={InfoSvg}

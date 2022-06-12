@@ -1,0 +1,27 @@
+.reset {
+  padding: 2rem 2rem 1rem;
+  color: $color-blue;
+  text-align: center;
+  line-height: 1.25rem;
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem;
+    margin: 2rem 0;
+
+    // for safari below 14.1 that not supports gap with flexbox
+    @media not all and (min-resolution: 0.001dpcm) {
+      @supports (-webkit-appearance: none) {
+        margin: -0.35rem;
+        & > * {
+          margin: 0.35rem;
+        }
+      }
+    }
+
+    button {
+      min-width: 3.25rem;
+    }
+  }
+}

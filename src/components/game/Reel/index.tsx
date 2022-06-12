@@ -16,7 +16,7 @@ interface ReelProps {
   animationDuration: number;
 }
 
-const Reel: React.FC<ReelProps> = ({ symbols: reel, reelIndex, animationDuration }) => {
+const Reel: React.FC<ReelProps> = ({ symbols, reelIndex, animationDuration }) => {
   const areSlotsSpinning = useSelector((state: State) => state.slotMachine.isSpinning);
   const [isReelSpinning, setIsReelsSpinning] = useState<boolean>(false);
   const reelRef = useRef<HTMLDivElement>(null);
@@ -52,7 +52,7 @@ const Reel: React.FC<ReelProps> = ({ symbols: reel, reelIndex, animationDuration
       y: (index: number) => index * symbolSizeInPx,
     });
 
-    const reelHeight: number = reel.length * symbolSizeInPx;
+    const reelHeight: number = symbols.length * symbolSizeInPx;
     const wrapOffsetTop: number = -symbolSizeInPx;
     const wrapOffsetBottom: number = reelHeight + wrapOffsetTop;
     const wrap = gsap.utils.wrap(wrapOffsetTop, wrapOffsetBottom);
@@ -75,8 +75,8 @@ const Reel: React.FC<ReelProps> = ({ symbols: reel, reelIndex, animationDuration
   }, []);
 
   return (
-    <div className={styles.reel} ref={reelRef}>
-      {reel.map((symbol, index) => (
+    <div className={styles.reel} ref={reelRef} data-cy="reel">
+      {symbols.map((symbol, index) => (
         <SymbolComponent
           symbol={symbol}
           isSpinning={isReelSpinning}
