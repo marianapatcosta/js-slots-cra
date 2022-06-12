@@ -14,12 +14,12 @@ import {
 import { Position, Symbol, SymbolType, PayLineResult, PayLine, SlotScreenResult } from '@/types';
 import { deepClone, getRandomNumber, shuffleArray } from '@/utils';
 
-const getRandomPosition = (): Position => ({
+export const getRandomPosition = (): Position => ({
   reel: getRandomNumber(0, REELS_NUMBER - 1),
   row: getRandomNumber(0, ROW_NUMBER - 1),
 });
 
-const isPositionFilled = (positions: Position[], position: Position): boolean =>
+export const isPositionFilled = (positions: Position[], position: Position): boolean =>
   positions.some(({ reel, row }) => position.row === row && position.reel === reel);
 
 const getWildcardPositions = (): Position[] => {

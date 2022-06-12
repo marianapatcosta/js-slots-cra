@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render without errors and match snapshot 1`] = `
+<div
+  class="loader"
+>
+  <div
+    class="slot loader__slot"
+  >
+    <p
+      class="slot__letter"
+    >
+      l
+    </p>
+    <p
+      class="slot__letter"
+    >
+      o
+    </p>
+    <p
+      class="slot__letter"
+    >
+      a
+    </p>
+    <p
+      class="slot__letter"
+    >
+      d
+    </p>
+    <p
+      class="slot__letter"
+    >
+      i
+    </p>
+    <p
+      class="slot__letter"
+    >
+      n
+    </p>
+    <p
+      class="slot__letter"
+    >
+      g
+    </p>
+    <div
+      class="slot__adapter"
+    />
+    <div
+      class="slot__handler"
+    />
+  </div>
+  <div
+    class="loader__progress-wrapper"
+  >
+    <div
+      aria-label="loading"
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="0"
+      class="loader__progress"
+      role="progressbar"
+      style="width: 0%;"
+    />
+  </div>
+</div>
+`;
