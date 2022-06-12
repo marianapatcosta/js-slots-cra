@@ -35,7 +35,7 @@
     "build": "craco build",
     "lint": "eslint --max-warnings=0 src",
     "validate-ts": "tsc --project ./tsconfig.json",
-    "test:unit": "craco test",
+    "test:unit": "craco test -u",
     "test:unit-coverage": "yarn test:unit --watchAll --env=jsdom --coverage",
     "test:e2e": "cypress open",
     "gen-scss-types": "typed-scss-modules src --additionalData \"@import './assets/styles/_index.scss';\" --nameFormat none --exportType default",
