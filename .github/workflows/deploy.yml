@@ -23,12 +23,14 @@ jobs:
         run: yarn lint
       - name: Run unit tests
         run: yarn test:unit
+        env:
+          FORCE_COLOR: true
       - name: Run Cypress tests
         uses: cypress-io/github-action@v4
         with:
           start: yarn start
           browser: chrome
-          wait-on: "http://localhost:3000"
+          wait-on: 'http://localhost:3000'
           headless: true
       - name: Build app
         run: yarn build
