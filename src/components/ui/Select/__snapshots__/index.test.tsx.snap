@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select renders without errors and matches snapshot 1`] = `
+<label
+  class="select "
+>
+  <p>
+    Select
+  </p>
+  <select>
+    <option
+      value="option 1"
+    >
+      option 1
+    </option>
+    <option
+      value="option 2"
+    >
+      option 2
+    </option>
+    <option
+      value="option 3"
+    >
+      option 3
+    </option>
+  </select>
+</label>
+`;

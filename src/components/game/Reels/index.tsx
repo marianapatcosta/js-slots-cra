@@ -15,7 +15,7 @@ const Reels: React.FunctionComponent<ReelsProps> = ({ reels }) => {
     getRandomNumber(MIN_SPIN_ANIMATION_DURATION, MAX_SPIN_ANIMATION_DURATION) * Math.random();
 
   return (
-    <div className={styles.reels}>
+    <div className={styles.reels} data-cy="reels">
       {reels.map((reel, index) => (
         <Reel
           symbols={reel}
