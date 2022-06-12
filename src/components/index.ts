@@ -12,7 +12,7 @@ import { Modal } from './ui/Modal';
 import { PayLines } from './game/PayLines';
 import { Reel } from './game/Reel';
 import { Reels } from './game/Reels';
-import { ResetGame } from './ui/ResetGame';
+import { ResetGame } from './game/ResetGame';
 import { Select } from './ui/Select';
 import { Settings } from './ui/Settings';
 import { SlotHeader } from './ui/SlotHeader';

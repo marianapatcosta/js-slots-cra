@@ -22,12 +22,12 @@ module.exports = {
     coverageReporters: ['text'],
     moduleNameMapper: {
       '^@/(.+)': '<rootDir>/src/$1',
-      '\\.(css|scss)$': '<rootDir>/test/__mocks__/style-mock.ts',
+      '\\.(css|scss)$': '<rootDir>/__mocks__/style-mock.ts',
       '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-        '<rootDir>/test/__mocks__/file-mock.ts',
-      i18next: '<rootDir>/test/__mocks__/i18next-mock.ts',
-      'react-i18next': '<rootDir>/test/__mocks__/react-i18next-mock.ts',
-      nanoid: '<rootDir>/test/__mocks__/nanoid-mock.ts',
+        '<rootDir>/__mocks__/file-mock.ts',
+      i18next: '<rootDir>/__mocks__/i18next-mock.ts',
+      'react-i18next': '<rootDir>/__mocks__/react-i18next-mock.ts',
+      nanoid: '<rootDir>/_mocks__/nanoid-mock.ts',
     },
     transform: {
       '^.+\\.ts?$': 'ts-jest',
