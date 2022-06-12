@@ -17,12 +17,15 @@ const ButtonIcon: React.FC<ButtonIconProps> = ({
   onClick,
   ...rest
 }) => {
-  const handleOnClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
-    if (buttonSound) {
-      buttonSound.play();
-    }
-    onClick(event);
-  }, [buttonSound, onClick]);
+  const handleOnClick = useCallback(
+    (event: MouseEvent<HTMLButtonElement>) => {
+      if (buttonSound) {
+        buttonSound.play();
+      }
+      onClick(event);
+    },
+    [buttonSound, onClick]
+  );
 
   return (
     <button

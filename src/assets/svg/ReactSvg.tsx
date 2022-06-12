@@ -10,6 +10,7 @@ const ReactSvg: React.FC<SymbolSvgProps> = ({ animate = false }) => {
       height="50"
       viewBox="-11.5 -10.232 23 20.463"
       xmlns="http://www.w3.org/2000/svg"
+      data-testid="button-icon"
     >
       <circle r="2.05" fill="#61dafb" />
       <g fill="none" stroke="#61dafb">
