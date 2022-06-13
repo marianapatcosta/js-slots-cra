@@ -164,6 +164,7 @@ const SlotMachine: React.FC = () => {
     credits,
     isAutoSpinOn,
     finalSlotScreen,
+    getTimerForNewSpin,
     onSpin,
     openModal,
   ]);
