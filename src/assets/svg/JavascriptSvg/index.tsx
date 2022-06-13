@@ -4,7 +4,7 @@ interface SymbolSvgProps {
   animate?: boolean;
 }
 
-const JavascriptSvg: React.FC<SymbolSvgProps> = ({ animate = true }) => {
+const JavascriptSvg: React.FC<SymbolSvgProps> = ({ animate }) => {
   return (
     <svg
       aria-hidden={true}
