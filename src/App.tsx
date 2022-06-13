@@ -1,7 +1,6 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
 import { Provider } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-
 import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
 import {
@@ -61,7 +60,6 @@ const App = () => {
   const addToast = (newToast: ToastData): void => setToastData(prevData => [...prevData, newToast]);
   const removeToast = (toastIndex: number): void =>
     setToastData(prevData => prevData.filter((_, index) => index !== toastIndex));
-  // const toastListRef = useRef<HTMLDivElement>(null);
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const onLoadEnd = (): void => setIsLoading(false);
@@ -116,13 +114,9 @@ const App = () => {
                   exit: styles['toast-exit'],
                   exitActive: styles['toast-exit-active'],
                 }}
-                /*      nodeRef={toastListRef} */
               >
                 <Toast
                   message={data.message}
-                  /*    ref={el => {
-                    toastListRef?.current && (toastListRef.current[index] = el);
-                  }} */
                   style={{ top: `${TOAST_OFFSET * index + 2}rem` }}
                   type={data.type}
                   onToastDismiss={() => removeToast(index)}
