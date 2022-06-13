@@ -108,7 +108,11 @@ const SlotMachine: React.FC = () => {
         !value || (Array.isArray(value) && !value.length)
     );
 
-    return noResults ? 100 : ANIMATE_RESULTS_DURATION;
+    if (isAutoSpinOn && noResults) {
+      return ANIMATE_RESULTS_DURATION / 2;
+    }
+
+    return noResults ? ANIMATE_RESULTS_DURATION / 5 : ANIMATE_RESULTS_DURATION;
   };
 
   const onSpinningEnd = useCallback(() => {
@@ -133,7 +137,7 @@ const SlotMachine: React.FC = () => {
     const timeToNewSpin: number = getTimerForNewSpin(slotResult);
 
     // shuffle reels for next spinning
-  /*   const shuffledReels = getShuffledReels();
+    /*   const shuffledReels = getShuffledReels();
     setReels(prevReels =>
       prevReels.map((reel, index) => [
         ...reel.slice(0, ROW_NUMBER),
