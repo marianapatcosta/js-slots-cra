@@ -102,7 +102,7 @@ const SlotMachine: React.FC = () => {
     [finalSlotScreen]
   );
 
-  const getTimerForNewSpin = (slotResult: SlotScreenResult): number => {
+  const getTimerForNewSpin = useCallback((slotResult: SlotScreenResult): number => {
     const noResults = Object.entries(slotResult).every(
       ([key, value]: [string, SlotScreenResult[keyof SlotScreenResult]]) =>
         !value || (Array.isArray(value) && !value.length)
@@ -113,7 +113,7 @@ const SlotMachine: React.FC = () => {
     }
 
     return noResults ? ANIMATE_RESULTS_DURATION / 5 : ANIMATE_RESULTS_DURATION;
-  };
+  }, [isAutoSpinOn]);
 
   const onSpinningEnd = useCallback(() => {
     slotWheelSound.pause();
