@@ -2,13 +2,16 @@
 
 JS Slot Machine is a Progressive web app with a regular slot machine game that has the logos of main JS-related tools as symbols.
 
+## Implemented Functionalities
+- 9 Pay Lines
+
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `yarn install`
 
-Installs all the dependencies required to run and develop this application.
+Installs all the dependencies required to rmaun and develop this application.
 
 ### `yarn dev`
 
