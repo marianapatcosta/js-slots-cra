@@ -1,5 +1,5 @@
 import { ChangeEvent, useContext, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { batch, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Button, Checkbox } from '@/components';
 import { GAME_RESET, RESET_MODAL_DISMISSED } from '@/store/action-types';
@@ -16,9 +16,14 @@ const ResetGame: React.FC = () => {
   const handleConfirmDiscard = (): void => {
     dispatch({ type: GAME_RESET });
     if (doNotShowAgain) {
-      dispatch({ type: RESET_MODAL_DISMISSED, payload: true });
+      batch(() => {
+        dispatch({ type: RESET_MODAL_DISMISSED, payload: true });
+        dispatch({ type: GAME_RESET });
+      });
+      return closeModal();
     }
-    closeModal();
+    dispatch({ type: GAME_RESET });
+    return closeModal();
   };
 
   const handleDeclineReset = (): void => {
@@ -35,7 +40,7 @@ const ResetGame: React.FC = () => {
 
   return (
     <div className={styles.reset}>
-      <p>{modalProps?.hasNoCredits ? t('reset.resetGame') : t('reset.resetGame')}</p>
+      <p>{modalProps?.hasNoCredits ? t('reset.resetGameNoCredits') : t('reset.resetGame')}</p>
       <div className={styles['reset__buttons']}>
         {!modalProps?.hasNoCredits && (
           <Button

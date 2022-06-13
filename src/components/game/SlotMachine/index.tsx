@@ -102,6 +102,15 @@ const SlotMachine: React.FC = () => {
     [finalSlotScreen]
   );
 
+  const getTimerForNewSpin = (slotResult: SlotScreenResult): number => {
+    const noResults = Object.entries(slotResult).every(
+      ([key, value]: [string, SlotScreenResult[keyof SlotScreenResult]]) =>
+        !value || (Array.isArray(value) && !value.length)
+    );
+
+    return noResults ? 100 : ANIMATE_RESULTS_DURATION;
+  };
+
   const onSpinningEnd = useCallback(() => {
     slotWheelSound.pause();
     let slotResult: SlotScreenResult = getScreenResult(finalSlotScreen);
@@ -121,20 +130,27 @@ const SlotMachine: React.FC = () => {
     }
     const action = { type: SPIN_ENDED, payload: slotResult };
     dispatch(action);
+    const timeToNewSpin: number = getTimerForNewSpin(slotResult);
 
-    if (!credits) {
-      openModal(ModalType.RESET, { hasNoCredits: true });
-      return;
-    }
+    // shuffle reels for next spinning
+  /*   const shuffledReels = getShuffledReels();
+    setReels(prevReels =>
+      prevReels.map((reel, index) => [
+        ...reel.slice(0, ROW_NUMBER),
+        ...shuffledReels[index].slice(ROW_NUMBER),
+      ])
+    ); */
 
     setTimeout(() => {
+      const updatedCredits: number = credits + slotResult.winAmount;
+      if (!updatedCredits) {
+        openModal(ModalType.RESET, { hasNoCredits: true });
+      }
       dispatch({ type: NEW_SPIN_PREPARED });
-      // setFinalSlotScreens([]);
-      // TODO remove added symbols from array and shuffle the non visible symbols
       if (isAutoSpinOn) {
         onSpin();
       }
-    }, ANIMATE_RESULTS_DURATION);
+    }, timeToNewSpin);
   }, [
     dispatch,
     isSoundOn,

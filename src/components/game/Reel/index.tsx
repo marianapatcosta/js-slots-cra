@@ -18,7 +18,7 @@ interface ReelProps {
 
 const Reel: React.FC<ReelProps> = ({ symbols, reelIndex, animationDuration }) => {
   const areSlotsSpinning = useSelector((state: State) => state.slotMachine.isSpinning);
-  const [isReelSpinning, setIsReelsSpinning] = useState<boolean>(false);
+  const [isReelSpinning, setIsReelSpinning] = useState<boolean>(false);
   const reelRef = useRef<HTMLDivElement>(null);
   const reelSelector: gsap.utils.SelectorFunc = gsap.utils.selector(reelRef);
   const [spinAnimation, setSpinAnimation] = useState<gsap.core.Tween | null>(null);
@@ -31,7 +31,7 @@ const Reel: React.FC<ReelProps> = ({ symbols, reelIndex, animationDuration }) =>
     useContext<ReelsContextData>(ReelsContext);
 
   const onSpinningAnimationEnd = useCallback(() => {
-    setIsReelsSpinning(false);
+    setIsReelSpinning(false);
     onReelAnimationEnd(reelIndex);
     if (reelIndex === REELS_NUMBER - 1) {
       onSpinningEnd();
@@ -42,7 +42,7 @@ const Reel: React.FC<ReelProps> = ({ symbols, reelIndex, animationDuration }) =>
     if (!areSlotsSpinning) {
       return;
     }
-    setIsReelsSpinning(true);
+    setIsReelSpinning(true);
     spinAnimation?.play();
   }, [areSlotsSpinning, spinAnimation]);
 

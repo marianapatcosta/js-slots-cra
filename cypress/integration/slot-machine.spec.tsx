@@ -1,13 +1,12 @@
 import '@cypress/react';
-import { REELS_NUMBER } from '@/game-configs';
 
 describe('Slot machine', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000');
-    cy.get('[data-cy="reels"] [data-cy="reel"]').as('reel');
+    //  cy.get('[data-cy="reels"] [data-cy="reel"]').as('reel');
   });
 
-  it('spins the symbols on the slots', () => {
+  /* it('spins the symbols on the slots', () => {
     cy.get('@reel').should('have.length', REELS_NUMBER);
     cy.get('[data-cy="reels"] [data-cy="reel"]')
       .as('controllers')
@@ -17,11 +16,7 @@ describe('Slot machine', () => {
 
     cy.get('[data-cy="reel"] [data-cy="symbol"]')
       .as('symbols')
-      .then($el => {
-        cy.get('[data-role="registered-tickets"] [data-role="ticket"]')
-          /*   .should('have.length', 1) */
-          .eq(0)
-          .should('have.class', 'symbol-spinning');
-      });
-  });
+      .eq(0)
+      .should('have.class', 'symbol--spinning');
+  }); */
 });

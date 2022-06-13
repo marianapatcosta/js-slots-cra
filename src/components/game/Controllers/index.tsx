@@ -100,7 +100,7 @@ const Controllers: React.FC<ControllersProps> = ({ isSpinning, onSpin }) => {
         value={bet}
         min={1}
         max={credits}
-        disabled={isSpinning}
+        disabled={isSpinning || !credits}
         buttonsSound={isSoundOn ? coinsSound : null}
         onChange={handleCurrentBetChange}
         onIncreaseBet={handleBetIncrease}
@@ -109,7 +109,7 @@ const Controllers: React.FC<ControllersProps> = ({ isSpinning, onSpin }) => {
       <Button
         label={t('controllers.spin')}
         aria-label={t('controllers.spin')}
-        disabled={isSpinning || !!winPayLines.length || !!losePayLines.length}
+        disabled={isSpinning || !!winPayLines.length || !!losePayLines.length || !credits}
         additionalClass={styles['controllers__spin-button']}
         buttonSound={isSoundOn ? casinoPressSound : null}
         onClick={onSpin}
