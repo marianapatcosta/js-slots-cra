@@ -1,6 +1,9 @@
 import { applyMiddleware, compose, createStore, combineReducers } from 'redux';
+import i18n from '@/locales/i18n';
 import { loadState, saveState } from './persist-state';
 import { settingsReducer, slotMachineReducer } from './reducers';
+import { setTheme } from '@/utils';
+import { State } from './types';
 
 const persistedState = loadState();
 
@@ -9,7 +12,7 @@ const devtoolsCompose =
     ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
     : compose;
 
-export const store = createStore(
+const store = createStore(
   combineReducers({
     settings: settingsReducer,
     slotMachine: slotMachineReducer,
@@ -17,3 +20,12 @@ export const store = createStore(
   persistedState,
   devtoolsCompose(applyMiddleware(saveState))
 );
+
+// if no persisted state, set theme and language according to user's system preferences (default state of store)
+if (!persistedState) {
+  const state: State = store.getState();
+  setTheme(state.settings.currentTheme);
+  i18n.changeLanguage(state.settings.currentLanguage);
+}
+
+export { store };

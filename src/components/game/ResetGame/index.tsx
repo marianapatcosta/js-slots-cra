@@ -1,5 +1,5 @@
 import { ChangeEvent, useContext, useState } from 'react';
-import { batch, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Button, Checkbox } from '@/components';
 import { GAME_RESET, RESET_MODAL_DISMISSED } from '@/store/action-types';
@@ -14,12 +14,8 @@ const ResetGame: React.FC = () => {
   const buttonLabel: string = modalProps?.hasNoCredits ? t('global.ok') : t('global.yes');
 
   const handleConfirmDiscard = (): void => {
-    dispatch({ type: GAME_RESET });
     if (doNotShowAgain) {
-      batch(() => {
-        dispatch({ type: RESET_MODAL_DISMISSED, payload: true });
-        dispatch({ type: GAME_RESET });
-      });
+      dispatch({ type: RESET_MODAL_DISMISSED, payload: true });
       return closeModal();
     }
     dispatch({ type: GAME_RESET });

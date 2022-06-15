@@ -121,6 +121,7 @@ export const reducer = (state = initialState, action: Action): State => {
         isAutoSpinOn: false,
         showPayLines: false,
         bonusWildcardsPositions: [],
+        winPayLines: [],
       };
     case GAME_RESET:
       return {
@@ -128,9 +129,11 @@ export const reducer = (state = initialState, action: Action): State => {
         resetGameOnMount: state.resetGameOnMount,
       };
     case RESET_MODAL_DISMISSED:
+      const resetGameOnMount: boolean = action.payload;
+      const newState: State = resetGameOnMount ? initialState : state;
       return {
-        ...state,
-        resetGameOnMount: action.payload,
+        ...newState,
+        resetGameOnMount,
       };
     default:
       return state;
