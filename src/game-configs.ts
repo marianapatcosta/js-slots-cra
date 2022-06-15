@@ -235,6 +235,6 @@ export const SYMBOL_SIZE_SMALL: Readonly<number> = 4; // in rem
 export const MIN_SPIN_ANIMATION_DURATION: Readonly<number> = 3; // in seconds
 export const MAX_SPIN_ANIMATION_DURATION: Readonly<number> = 4; // in seconds
 
-export const ANIMATE_RESULTS_DURATION: Readonly<number> = 5000; // in miliseconds
+export const ANIMATE_RESULTS_DURATION: Readonly<number> = 5000; // in milliseconds
 
 export const LIGHTS_NUMBER: Readonly<number> = 5;

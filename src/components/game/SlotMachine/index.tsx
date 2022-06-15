@@ -102,18 +102,21 @@ const SlotMachine: React.FC = () => {
     [finalSlotScreen]
   );
 
-  const getTimerForNewSpin = useCallback((slotResult: SlotScreenResult): number => {
-    const noResults = Object.entries(slotResult).every(
-      ([key, value]: [string, SlotScreenResult[keyof SlotScreenResult]]) =>
-        !value || (Array.isArray(value) && !value.length)
-    );
+  const getTimerForNewSpin = useCallback(
+    (slotResult: SlotScreenResult): number => {
+      const noResults = Object.entries(slotResult).every(
+        ([key, value]: [string, SlotScreenResult[keyof SlotScreenResult]]) =>
+          !value || (Array.isArray(value) && !value.length)
+      );
 
-    if (isAutoSpinOn && noResults) {
-      return ANIMATE_RESULTS_DURATION / 2;
-    }
+      if (isAutoSpinOn && noResults) {
+        return ANIMATE_RESULTS_DURATION / 2;
+      }
 
-    return noResults ? ANIMATE_RESULTS_DURATION / 5 : ANIMATE_RESULTS_DURATION;
-  }, [isAutoSpinOn]);
+      return noResults ? ANIMATE_RESULTS_DURATION / 5 : ANIMATE_RESULTS_DURATION;
+    },
+    [isAutoSpinOn]
+  );
 
   const onSpinningEnd = useCallback(() => {
     slotWheelSound.pause();
@@ -132,8 +135,7 @@ const SlotMachine: React.FC = () => {
     if (!!slotResult.losePayLines.length) {
       isSoundOn && loseSound.play();
     }
-    const action = { type: SPIN_ENDED, payload: slotResult };
-    dispatch(action);
+    dispatch({ type: SPIN_ENDED, payload: slotResult });
     const timeToNewSpin: number = getTimerForNewSpin(slotResult);
 
     // shuffle reels for next spinning
@@ -168,12 +170,18 @@ const SlotMachine: React.FC = () => {
     onSpin,
     openModal,
   ]);
-
+  const worker = new Worker(new URL('../../../workers/shuffle-worker.ts', import.meta.url));
   useEffect(() => {
     const shuffledReels = getShuffledReels();
     setReels(shuffledReels);
     setGameConfigs();
+/*     worker.postMessage('hello');
 
+    worker.onmessage = event => {
+    console.log(777, event)
+      worker.terminate();
+    };
+ */
     return () => {
       dispatch({ type: GAME_LEFT });
     };
