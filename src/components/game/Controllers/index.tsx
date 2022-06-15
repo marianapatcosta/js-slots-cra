@@ -48,17 +48,11 @@ const Controllers: React.FC<ControllersProps> = ({ isSpinning, onSpin }) => {
   );
 
   const handleBetIncrease = useCallback(() => {
-    if (bet + 1 > credits) {
-      return;
-    }
     const action = { type: BET_UPDATED, payload: bet + 1 };
     dispatch(action);
-  }, [bet, credits, dispatch]);
+  }, [bet, dispatch]);
 
   const handleBetDecrease = useCallback(() => {
-    if (bet - 1 < 0) {
-      return;
-    }
     const action = { type: BET_UPDATED, payload: bet - 1 };
     dispatch(action);
   }, [bet, dispatch]);
@@ -67,13 +61,10 @@ const Controllers: React.FC<ControllersProps> = ({ isSpinning, onSpin }) => {
     (event: FormEvent<HTMLInputElement>) => {
       const target = event.target as HTMLInputElement;
       const value = parseInt(target.value);
-      if (value - 1 < 0 || value + 1 > credits) {
-        return;
-      }
       const action = { type: BET_UPDATED, payload: value };
       dispatch(action);
     },
-    [credits, dispatch]
+    [dispatch]
   );
 
   return (

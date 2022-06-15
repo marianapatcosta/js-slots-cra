@@ -56,7 +56,7 @@ export type Action =
 export const reducer = (state = initialState, action: Action): State => {
   switch (action.type) {
     case BET_UPDATED:
-      if (action.payload > state.credits) {
+      if (action.payload > state.credits || action.payload < 0) {
         return state;
       }
 
