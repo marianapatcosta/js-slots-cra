@@ -1,9 +1,11 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
+import { useSelector } from 'react-redux';
 import { PayLines, Reel } from '@/components';
-import type { Symbol } from '@/types';
+import type { Position, Symbol } from '@/types';
 import { MIN_SPIN_ANIMATION_DURATION, MAX_SPIN_ANIMATION_DURATION } from '@/game-configs';
 import { getRandomNumber } from '@/utils';
+import { State } from '@/store/types';
 import styles from './styles.module.scss';
 
 interface ReelsProps {
@@ -13,6 +15,7 @@ interface ReelsProps {
 const Reels: React.FunctionComponent<ReelsProps> = ({ reels }) => {
   const animationDuration =
     getRandomNumber(MIN_SPIN_ANIMATION_DURATION, MAX_SPIN_ANIMATION_DURATION) * Math.random();
+  const bonusWildCardsPositions: Position[] = useSelector((state: State) => state.slotMachine.bonusWildcardsPositions);
 
   return (
     <div className={styles.reels} data-cy="reels">
@@ -24,6 +27,7 @@ const Reels: React.FunctionComponent<ReelsProps> = ({ reels }) => {
           animationDuration={animationDuration}
         />
       ))}
+      {!!bonusWildCardsPositions.length && <h3 className={styles['reels__bonus']}>BONUS</h3>}
       <PayLines />
     </div>
   );

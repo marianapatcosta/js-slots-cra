@@ -23,8 +23,8 @@ import { ModalContext, ModalContextData } from '@/context/ModalContext';
 import { LoseSound, SlotWheelSound, ThemeSound, WinSound } from '@/assets/sounds';
 import { getRandomNumber } from '@/utils';
 import { ReelsContext } from '@/context/ReelsContext';
-import styles from './styles.module.scss';
 import { useSymbolSize } from '@/hooks';
+import styles from './styles.module.scss';
 
 const SlotMachine: React.FC = () => {
   const [reels, setReels] = useState<Symbol[][]>([]);
@@ -105,7 +105,7 @@ const SlotMachine: React.FC = () => {
   const getTimerForNewSpin = useCallback(
     (slotResult: SlotScreenResult): number => {
       const noResults = Object.entries(slotResult).every(
-        ([key, value]: [string, SlotScreenResult[keyof SlotScreenResult]]) =>
+        ([_, value]: [string, SlotScreenResult[keyof SlotScreenResult]]) =>
           !value || (Array.isArray(value) && !value.length)
       );
 
