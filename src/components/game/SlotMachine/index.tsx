@@ -170,7 +170,7 @@ const SlotMachine: React.FC = () => {
     onSpin,
     openModal,
   ]);
-  const worker = new Worker(new URL('../../../workers/shuffle-worker.ts', import.meta.url));
+  // const worker = new Worker(new URL('../../../workers/shuffle-worker.ts', import.meta.url));
   useEffect(() => {
     const shuffledReels = getShuffledReels();
     setReels(shuffledReels);
