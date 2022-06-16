@@ -22,8 +22,7 @@ exports[`Footer renders without errors and matches snapshot 1`] = `
         aria-hidden="true"
         height="50"
         version="1.1"
-        viewBox="0 
- 0 438.55 438.55"
+        viewBox="0  0 438.55 438.55"
         width="50"
         xmlns="http://www.w3.org/2000/svg"
       >
