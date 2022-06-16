@@ -1,5 +1,5 @@
 import { DEFAULT_BET, INITIAL_CREDITS, PAY_LINES_METADATA } from '@/game-configs';
-import { PayLine, Position, SlotScreenResult } from '@/types';
+import { PayLine, Position } from '@/types';
 import { BET_UPDATED, SPAN, SPIN_ENDED } from '../action-types';
 import { State, reducer as slotMachineReducer } from './slot-machine';
 

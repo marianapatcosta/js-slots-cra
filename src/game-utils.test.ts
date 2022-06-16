@@ -1,5 +1,5 @@
 import { SYMBOLS_METADATA } from './game-configs';
-import { Position, SlotScreenResult, Symbol } from './types';
+import type { Position, SlotScreenResult, Symbol } from './types';
 import { getRandomPosition, getScreenResult, isPositionFilled } from './game-utils';
 
 // MATCH PAY LINES 2 and 3 with 3 React symbol (returns winAmount 2)
