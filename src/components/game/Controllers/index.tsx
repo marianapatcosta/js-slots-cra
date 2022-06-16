@@ -12,7 +12,7 @@ import {
 import { ButtonIcon } from '@/components/ui/ButtonIcon';
 import { InfoSvg, SettingsSvg } from '@/assets/svg';
 import { ModalContext, ModalContextData } from '@/context/ModalContext';
-import { ModalType } from '@/types';
+import { ModalType, PayLine } from '@/types';
 import { BubblePressSound, CasinoPressSound, CoinsSound, SelectPressSound } from '@/assets/sounds';
 import styles from './styles.module.scss';
 
@@ -23,13 +23,13 @@ interface ControllersProps extends HTMLAttributes<HTMLDivElement> {
 
 const Controllers: React.FC<ControllersProps> = ({ isSpinning, onSpin }) => {
   const [t] = useTranslation();
-  const isSoundOn = useSelector((state: State) => state.settings.isSoundOn);
-  const credits = useSelector((state: State) => state.slotMachine.credits);
-  const bet = useSelector((state: State) => state.slotMachine.bet);
-  const isAutoSpinOn = useSelector((state: State) => state.slotMachine.isAutoSpinOn);
-  const showPayLines = useSelector((state: State) => state.slotMachine.showPayLines);
-  const winPayLines = useSelector((state: State) => state.slotMachine.winPayLines);
-  const losePayLines = useSelector((state: State) => state.slotMachine.losePayLines);
+  const isSoundOn: boolean = useSelector((state: State) => state.settings.isSoundOn);
+  const credits: number = useSelector((state: State) => state.slotMachine.credits);
+  const bet: number = useSelector((state: State) => state.slotMachine.bet);
+  const isAutoSpinOn: boolean = useSelector((state: State) => state.slotMachine.isAutoSpinOn);
+  const showPayLines: boolean = useSelector((state: State) => state.slotMachine.showPayLines);
+  const winPayLines: PayLine[] = useSelector((state: State) => state.slotMachine.winPayLines);
+  const bonusFactor: number = useSelector((state: State) => state.slotMachine.bonusFactor);
   const dispatch = useDispatch();
 
   const coinsSound: HTMLAudioElement = new Audio(CoinsSound);
@@ -100,7 +100,7 @@ const Controllers: React.FC<ControllersProps> = ({ isSpinning, onSpin }) => {
       <Button
         label={t('controllers.spin')}
         aria-label={t('controllers.spin')}
-        disabled={isSpinning || !!winPayLines.length || !!losePayLines.length || !credits}
+        disabled={isSpinning || !!winPayLines.length || !credits}
         additionalClass={styles['controllers__spin-button']}
         buttonSound={isSoundOn ? casinoPressSound : null}
         onClick={onSpin}
@@ -113,7 +113,7 @@ const Controllers: React.FC<ControllersProps> = ({ isSpinning, onSpin }) => {
       />
       <Button
         label={t('controllers.payLines')}
-        isPressed={showPayLines && !winPayLines.length && !losePayLines.length}
+        isPressed={showPayLines && !winPayLines.length}
         buttonSound={isSoundOn ? selectPressSound : null}
         onClick={() => handleUpdateControllersState(SHOW_PAY_LINES_STATE_CHANGED, !showPayLines)}
       />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { nanoid } from 'nanoid';
 import { useSelector } from 'react-redux';
 import { PayLines, Reel } from '@/components';
@@ -16,6 +16,22 @@ const Reels: React.FunctionComponent<ReelsProps> = ({ reels }) => {
   const animationDuration =
     getRandomNumber(MIN_SPIN_ANIMATION_DURATION, MAX_SPIN_ANIMATION_DURATION) * Math.random();
   const bonusWildCardsPositions: Position[] = useSelector((state: State) => state.slotMachine.bonusWildcardsPositions);
+  const bonusFactor: number = useSelector((state: State) => state.slotMachine.bonusFactor);
+  const bonusText: string = useMemo(() => {
+    if (!!bonusWildCardsPositions.length && !!bonusFactor) {
+      return `BONUS x${bonusFactor}`;
+    }
+
+    if (!!bonusWildCardsPositions.length) {
+      return 'BONUS';
+    }
+
+    if (!!bonusFactor) {
+      return `x${bonusFactor}`;
+    }
+
+    return '';
+  }, [bonusFactor, bonusWildCardsPositions]);
 
   return (
     <div className={styles.reels} data-cy="reels">
@@ -27,7 +43,7 @@ const Reels: React.FunctionComponent<ReelsProps> = ({ reels }) => {
           animationDuration={animationDuration}
         />
       ))}
-      {!!bonusWildCardsPositions.length && <h3 className={styles['reels__bonus']}>BONUS</h3>}
+      {!!bonusText && <h3 className={styles['reels__bonus']}>{bonusText}</h3>}
       <PayLines />
     </div>
   );

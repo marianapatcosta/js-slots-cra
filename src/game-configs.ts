@@ -23,8 +23,6 @@ const WIN_FACTORS: Readonly<{ [key: string]: number[] }> = {
   VERY_HIGH: [20, 200, 1000],
 };
 
-const LOSE_FACTOR: number[] = [6, 20, 150];
-
 export const WILDCARD_METADATA: Readonly<Omit<Symbol, 'id'>> = {
   type: SymbolType.TYPESCRIPT,
   icon: TypescriptSvg,
@@ -108,8 +106,8 @@ export const SYMBOLS_METADATA: Readonly<{ [key in SymbolType]: Omit<Symbol, 'id'
   },
   [SymbolType.VITE]: {
     ...EXPLOSIVE_METADATA,
-    frequency: 2,
-    loseFactor: LOSE_FACTOR,
+    frequency: 1,
+    winFactor: WIN_FACTORS.HIGH,
   },
   [SymbolType.TYPESCRIPT]: {
     ...WILDCARD_METADATA,

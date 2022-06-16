@@ -105,10 +105,11 @@
 
     &:after {
       line-height: 2rem;
-      font-size: 1.65rem;
+      font-size: 2rem;
       color: $color-white;
       text-align: center;
       content: '\21BA';
+      top: -0.2rem;
     }
   }
 }

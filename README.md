@@ -13,21 +13,22 @@ JS Slot Machine is a Progressive web app with a regular slot machine game that h
 - Customizable bet amount;
 - AutoSpin capability;
 - Free spinnings;
-- Chance of winning Bonus WildCards;
-- Chance of losing credits;
+- Bonus WildCards;
+- Big winning due to win amout multipliers;
 - Special Symbols;
 
-- ![image](https://user-images.githubusercontent.com/43031902/173263031-986fd324-465a-47cc-b66b-898a0bb562ae.png)
+- ![image](https://user-images.githubusercontent.com/43031902/173920878-d7fe0088-e3c7-486e-a544-32e149eabd07.png)
 - Sounds on button click, winning, loss and spinning;
 - Lights blinking on winning and animation on matching symbols (including when Bonus wildcards are won);
 
 ### General features
 
 - Offline capability;
+- Instalable in your device;
 - Responsive design;
 - Dark theme;
 - Background theme;
-- Multilanguage (English and Portuguese for now);
+- Multilanguage (English and Portuguese);
 - Share game url;
 
 #### Lighthouse report for Desktop

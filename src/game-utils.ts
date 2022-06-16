@@ -66,28 +66,21 @@ const getSymbolMetaData = (symbolType: SymbolType): Symbol | null => {
   return SYMBOLS_METADATA[symbolType] as Symbol;
 };
 
-const findWinOrLoseFactor = (symbolType: SymbolType, symbolsInLine: number): number => {
+const findWinFactor = (symbolType: SymbolType, symbolsInLine: number): number => {
   const symbolMetadata = getSymbolMetaData(symbolType);
-  if (!symbolMetadata || (!symbolMetadata.winFactor && !symbolMetadata.loseFactor)) {
+  if (!symbolMetadata || !symbolMetadata.winFactor) {
     return 0;
   }
 
   const factorIndex = symbolsInLine - MIN_MATCH_SEQUENCE_NUMBER;
-  if (symbolMetadata.winFactor) {
-    return symbolMetadata.winFactor[factorIndex];
-  }
-
-  return symbolMetadata.loseFactor![factorIndex];
+  return symbolMetadata.winFactor[factorIndex];
 };
 
 export const wonBonusWildCards = (): boolean => Math.random() < 0.3;
 
-// not matched symbols are different and one of them is explosive or symbols are different and none of them is wildcard
+// not matched symbols are different and none of them is wildcard
 const areSymbolsNotMatched = (symbolAType: SymbolType, symbolB: Symbol): boolean =>
-  symbolAType !== symbolB.type &&
-  (symbolB.type === EXPLOSIVE_METADATA.type ||
-    symbolAType === EXPLOSIVE_METADATA.type ||
-    (symbolAType !== WILDCARD_METADATA.type && symbolB.type !== WILDCARD_METADATA.type));
+  symbolAType !== symbolB.type && (symbolAType !== WILDCARD_METADATA.type && symbolB.type !== WILDCARD_METADATA.type);
 
 export const getScreenWithBonusWildcards = (
   slotScreen: Symbol[][]
@@ -108,7 +101,7 @@ const getPayLineResult = (slotScreen: Symbol[][], payLine: PayLine): PayLineResu
     const position: Position = payLine.positions[positionIndex];
     const symbol: Symbol = slotScreen[position.reel][position.row];
 
-    // set initial values and go to next iteration
+    // if first position, set initial values and go to next iteration
     if (positionIndex === 0) {
       currentSymbolType = symbol.type;
       numberOfSymbolsInLine = 1;
@@ -116,11 +109,36 @@ const getPayLineResult = (slotScreen: Symbol[][], payLine: PayLine): PayLineResu
     }
 
     if (areSymbolsNotMatched(currentSymbolType as SymbolType, symbol)) {
-      // if symbols are not a match and positionIndex > MIN_MATCH_SEQUENCE_NUMBER, there is no more chance to match a line, so break
+      // if we already have a win sequence but the current symbol is not a match, break
+      if (numberOfSymbolsInLine >= MIN_MATCH_SEQUENCE_NUMBER) {
+        break;
+      }
+      
+      // If no win sequence yet, check if previous symbol is a Wildcard, which was not set as currentSymbol in the previous iteration 
+      // because regular symbols are preferentially stored instead, to be able to check if the next symbols are a match with them
+
+      // if index of previous symbol is higher than MIN_MATCH_SEQUENCE_NUMBER, there is no chance to match a line 
+      // even if we have a wildcard in the previous posiiton, so break
+      if (positionIndex - 1 > MIN_MATCH_SEQUENCE_NUMBER - 1) {
+        break;
+      }
+      
+      const previousPosition: Position = payLine.positions[positionIndex - 1];
+      const previousSymbol: Symbol = slotScreen[previousPosition.reel][previousPosition.row];
+      // Check if previous symbol is wildcard, so the new line can start being evaluated from the wildcard position
+      if (previousSymbol.type === WILDCARD_METADATA.type) {
+        currentSymbolType = symbol.type;
+        numberOfSymbolsInLine = 2;
+        initialPositionIndex = positionIndex - 1;
+        continue;
+      }
+      
+      // if no wildcard in previous position and currentSymbolIndex is higher than MIN_MATCH_SEQUENCE_NUMBER, there is no chance to match, so break 
       if (positionIndex > MIN_MATCH_SEQUENCE_NUMBER - 1) {
         break;
       }
-      // if there is still a change to match, adjust initial checking variables and continue to next iteration
+      
+      // if there is still a chance to match, adjust initial checking variables and continue to next iteration
       currentSymbolType = symbol.type;
       numberOfSymbolsInLine = 1;
       initialPositionIndex = positionIndex;
@@ -145,7 +163,7 @@ const getPayLineResult = (slotScreen: Symbol[][], payLine: PayLine): PayLineResu
 export const getScreenResult = (slotScreen: Symbol[][]): SlotScreenResult => {
   const payLines: PayLine[] = Object.values(PAY_LINES_METADATA);
   const winPayLines: PayLine[] = [];
-  const losePayLines: PayLine[] = [];
+  let bonusFactor: number = 0;
   let winAmount: number = 0;
   let freeSpins: number = 0;
 
@@ -160,26 +178,14 @@ export const getScreenResult = (slotScreen: Symbol[][]): SlotScreenResult => {
     }
 
     if (currentSymbolType === EXPLOSIVE_METADATA.type) {
-      const lossFactor: number = findWinOrLoseFactor(
-        currentSymbolType as SymbolType,
-        numberOfSymbolsInLine
-      );
-      winAmount -= lossFactor;
-      losePayLines.push({
-        ...payLine,
-        positions: payLine.positions.slice(
-          initialPositionIndex,
-          initialPositionIndex + numberOfSymbolsInLine
-        ),
-      });
-      continue;
+      bonusFactor = numberOfSymbolsInLine;
     }
 
     if (currentSymbolType === SCATTER_METADATA.type) {
       freeSpins += FREE_SPINS_NUMBER;
     }
 
-    const winFactor: number = findWinOrLoseFactor(
+    const winFactor: number = findWinFactor(
       currentSymbolType as SymbolType,
       numberOfSymbolsInLine
     );
@@ -196,7 +202,7 @@ export const getScreenResult = (slotScreen: Symbol[][]): SlotScreenResult => {
   return {
     winAmount,
     winPayLines,
-    losePayLines,
+    bonusFactor,
     freeSpins,
   };
 };
