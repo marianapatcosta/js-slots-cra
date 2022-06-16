@@ -56,7 +56,6 @@ export type Symbol = {
   icon: React.FC<{ animate?: boolean }>;
   frequency?: number;
   winFactor?: number[];
-  loseFactor?: number[];
 };
 
 export enum PayLineType {
@@ -86,8 +85,8 @@ export type PayLineResult = {
 export type SlotScreenResult = {
   winAmount: number;
   freeSpins: number;
+  bonusFactor: number;
   winPayLines: PayLine[];
-  losePayLines: PayLine[];
 };
 
 export enum Color {

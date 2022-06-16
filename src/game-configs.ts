@@ -23,8 +23,6 @@ const WIN_FACTORS: Readonly<{ [key: string]: number[] }> = {
   VERY_HIGH: [20, 200, 1000],
 };
 
-const LOSE_FACTOR: number[] = [6, 20, 150];
-
 export const WILDCARD_METADATA: Readonly<Omit<Symbol, 'id'>> = {
   type: SymbolType.TYPESCRIPT,
   icon: TypescriptSvg,
@@ -108,8 +106,8 @@ export const SYMBOLS_METADATA: Readonly<{ [key in SymbolType]: Omit<Symbol, 'id'
   },
   [SymbolType.VITE]: {
     ...EXPLOSIVE_METADATA,
-    frequency: 2,
-    loseFactor: LOSE_FACTOR,
+    frequency: 1,
+    winFactor: WIN_FACTORS.HIGH,
   },
   [SymbolType.TYPESCRIPT]: {
     ...WILDCARD_METADATA,
@@ -235,6 +233,6 @@ export const SYMBOL_SIZE_SMALL: Readonly<number> = 4; // in rem
 export const MIN_SPIN_ANIMATION_DURATION: Readonly<number> = 3; // in seconds
 export const MAX_SPIN_ANIMATION_DURATION: Readonly<number> = 4; // in seconds
 
-export const ANIMATE_RESULTS_DURATION: Readonly<number> = 5000; // in miliseconds
+export const ANIMATE_RESULTS_DURATION: Readonly<number> = 5000; // in milliseconds
 
 export const LIGHTS_NUMBER: Readonly<number> = 5;

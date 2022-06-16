@@ -13,7 +13,6 @@ type LineNumberSquareData = { top: number; color: string; lineNumber: number }[]
 const PayLines: React.FC = () => {
   const showPayLines = useSelector((state: State) => state.slotMachine.showPayLines);
   const winPayLines: PayLine[] = useSelector((state: State) => state.slotMachine.winPayLines);
-  const losePayLines: PayLine[] = useSelector((state: State) => state.slotMachine.losePayLines);
   const canvasWrapperRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -82,20 +81,12 @@ const PayLines: React.FC = () => {
   }, []);
 
   const getPayLinesMetadata = useCallback((): PayLine[] => {
-    if (winPayLines?.length && losePayLines?.length) {
-      return filterPayLinesToRender([...winPayLines, ...losePayLines]);
-    }
-
     if (winPayLines?.length) {
       return filterPayLinesToRender(winPayLines);
     }
 
-    if (losePayLines?.length) {
-      return filterPayLinesToRender(losePayLines);
-    }
-
     return Object.values(PAY_LINES_METADATA);
-  }, [winPayLines, losePayLines, filterPayLinesToRender]);
+  }, [winPayLines, filterPayLinesToRender]);
 
   const getLineNumberSquaresData = useCallback(
     (payLines: PayLine[]): LineNumberSquareData =>
