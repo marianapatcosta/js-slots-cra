@@ -22,7 +22,7 @@ jobs:
       - name: Run linter
         run: yarn lint
       - name: Run unit tests
-        run: yarn test:unit-coverage
+        run: yarn test:unit
         env:
           FORCE_COLOR: true
       - name: Run Cypress tests
