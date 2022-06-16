@@ -12,5 +12,4 @@ export const AUTO_SPIN_STATE_CHANGED = 'autoSpinStateChanged';
 export const SHOW_PAY_LINES_STATE_CHANGED = 'showPayLinesStateChanged';
 export const GAME_RESET = 'gameReset';
 export const RESET_MODAL_DISMISSED = 'resetModalDismissed';
-export const GAME_LEFT = 'gameLeft';
 export const NEW_SPIN_PREPARED = 'newSpinPrepared';

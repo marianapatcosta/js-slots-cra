@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import { Controllers, Reels, WinsDisplay } from '@/components';
 import { ANIMATE_RESULTS_DURATION, ROW_NUMBER } from '@/game-configs';
 import { ModalType, Position, SlotScreenResult, Symbol } from '@/types';
-import { SPIN_ENDED, GAME_RESET, GAME_LEFT, NEW_SPIN_PREPARED, SPAN } from '@/store/action-types';
+import { SPIN_ENDED, GAME_RESET, NEW_SPIN_PREPARED, SPAN } from '@/store/action-types';
 import {
   getScreenResult,
   getScreenWithBonusWildcards,
@@ -177,9 +177,6 @@ const SlotMachine: React.FC = () => {
       worker.terminate();
     };
  */
-    return () => {
-      dispatch({ type: GAME_LEFT });
-    };
     // eslint-disable-next-line
   }, []);
 

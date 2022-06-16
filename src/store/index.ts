@@ -1,11 +1,11 @@
 import { applyMiddleware, compose, createStore, combineReducers } from 'redux';
 import i18n from '@/locales/i18n';
+import { setTheme } from '@/utils';
 import { loadState, saveState } from './persist-state';
 import { settingsReducer, slotMachineReducer } from './reducers';
-import { setTheme } from '@/utils';
-import { State } from './types';
+import type { State } from './types';
 
-const persistedState = loadState();
+const persistedState: State | undefined = loadState();
 
 const devtoolsCompose =
   typeof window === 'object' && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
