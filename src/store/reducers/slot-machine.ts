@@ -8,25 +8,24 @@ import {
   SPIN_ENDED,
   RESET_MODAL_DISMISSED,
   BET_UPDATED,
-  GAME_LEFT,
   NEW_SPIN_PREPARED,
 } from '../action-types';
 
 export interface State {
   readonly credits: number;
-  readonly bet: number;
   readonly freeSpins: number;
+  readonly resetGameOnMount: boolean | null;
+  readonly bet: number;
   readonly isSpinning: boolean;
   readonly isAutoSpinOn: boolean;
   readonly hasOngoingGame: boolean;
-  readonly resetGameOnMount: boolean | null;
   readonly showPayLines: boolean;
   readonly bonusFactor: number;
   readonly winPayLines: PayLine[];
   readonly bonusWildcardsPositions: Position[];
 }
 
-const initialState: State = {
+export const initialState: State = {
   credits: INITIAL_CREDITS,
   bet: DEFAULT_BET,
   freeSpins: 0,
@@ -47,7 +46,6 @@ export type Action =
   | { type: typeof AUTO_SPIN_STATE_CHANGED; payload: boolean }
   | { type: typeof SHOW_PAY_LINES_STATE_CHANGED; payload: boolean }
   | { type: typeof GAME_RESET }
-  | { type: typeof GAME_LEFT }
   | { type: typeof NEW_SPIN_PREPARED }
   | { type: typeof RESET_MODAL_DISMISSED; payload: boolean };
 
@@ -109,16 +107,6 @@ export const reducer = (state = initialState, action: Action): State => {
         bonusFactor: 0,
         winPayLines: [],
         bonusWildcardsPositions: [],
-      };
-    case GAME_LEFT:
-      return {
-        ...state,
-        isSpinning: false,
-        isAutoSpinOn: false,
-        showPayLines: false,
-        bonusWildcardsPositions: [],
-        winPayLines: [],
-        bonusFactor: 0,
       };
     case GAME_RESET:
       return {
