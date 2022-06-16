@@ -29,7 +29,7 @@ const SCREEN_3: Omit<Symbol, 'id'>[][] = [
   [SYMBOLS_METADATA.react, SYMBOLS_METADATA.mobx, SYMBOLS_METADATA.react],
 ];
 
-// MATCH PAY LINES 2 with 3 Scatter (w/ wildcard) and 3 with 3 React (returns winAmount 7, 10 freeSpins)
+// MATCH PAY LINES 2 with 3 Scatter (w/ match before wildcard) and 3 with 3 React (returns winAmount 7, 10 freeSpins)
 const SCREEN_4: Omit<Symbol, 'id'>[][] = [
   [SYMBOLS_METADATA.javascript, SYMBOLS_METADATA.vue, SYMBOLS_METADATA.angular],
   [SYMBOLS_METADATA.javascript, SYMBOLS_METADATA.mobx, SYMBOLS_METADATA.vite],
@@ -63,6 +63,33 @@ const SCREEN_7: Omit<Symbol, 'id'>[][] = [
   [SYMBOLS_METADATA.vue, SYMBOLS_METADATA.cypress, SYMBOLS_METADATA.react],
   [SYMBOLS_METADATA.pixiJs, SYMBOLS_METADATA.typescript, SYMBOLS_METADATA.redux],
   [SYMBOLS_METADATA.react, SYMBOLS_METADATA.mobx, SYMBOLS_METADATA.react],
+];
+
+// MATCH PAY LINES 2 with 3 Scatter (w/ match after wildcard) and 3 with 3 React (returns winAmount 7, 10 freeSpins)
+const SCREEN_8: Omit<Symbol, 'id'>[][] = [
+  [SYMBOLS_METADATA.pixiJs, SYMBOLS_METADATA.vue, SYMBOLS_METADATA.angular],
+  [SYMBOLS_METADATA.react, SYMBOLS_METADATA.mobx, SYMBOLS_METADATA.vite],
+  [SYMBOLS_METADATA.typescript, SYMBOLS_METADATA.pinia, SYMBOLS_METADATA.react],
+  [SYMBOLS_METADATA.javascript, SYMBOLS_METADATA.pinia, SYMBOLS_METADATA.react],
+  [SYMBOLS_METADATA.javascript, SYMBOLS_METADATA.mobx, SYMBOLS_METADATA.react],
+];
+
+// MATCH PAY LINES 2 with 3 Scatter (w/ match with wildcard in the middle) and 3 with 3 React (returns winAmount 7, 10 freeSpins)
+const SCREEN_9: Omit<Symbol, 'id'>[][] = [
+  [SYMBOLS_METADATA.pixiJs, SYMBOLS_METADATA.vue, SYMBOLS_METADATA.angular],
+  [SYMBOLS_METADATA.react, SYMBOLS_METADATA.mobx, SYMBOLS_METADATA.vite],
+  [SYMBOLS_METADATA.javascript, SYMBOLS_METADATA.pinia, SYMBOLS_METADATA.react],
+  [SYMBOLS_METADATA.typescript, SYMBOLS_METADATA.pinia, SYMBOLS_METADATA.react],
+  [SYMBOLS_METADATA.javascript, SYMBOLS_METADATA.mobx, SYMBOLS_METADATA.react],
+];
+
+// MATCH PAY LINE 3 with 3 React (returns winAmount 1)
+const SCREEN_10: Omit<Symbol, 'id'>[][] = [
+  [SYMBOLS_METADATA.pixiJs, SYMBOLS_METADATA.vue, SYMBOLS_METADATA.angular],
+  [SYMBOLS_METADATA.react, SYMBOLS_METADATA.mobx, SYMBOLS_METADATA.vite],
+  [SYMBOLS_METADATA.vue, SYMBOLS_METADATA.pinia, SYMBOLS_METADATA.react],
+  [SYMBOLS_METADATA.typescript, SYMBOLS_METADATA.pinia, SYMBOLS_METADATA.react],
+  [SYMBOLS_METADATA.javascript, SYMBOLS_METADATA.mobx, SYMBOLS_METADATA.react],
 ];
 
 describe('getRandomPosition', () => {
@@ -117,21 +144,37 @@ describe('getScreenResult', () => {
     expect(results.winPayLines).toHaveLength(2);
   });
 
-  it('should have winAmount of -6 and 1 losePayLines when SCREEN_5 is passed as value', () => {
+  it('should have winAmount of 7, freeSpins of 10 and 2 winPayLines (w/ wildcard) when SCREEN_8 is passed as value', () => {
+    const results: SlotScreenResult = getScreenResult(SCREEN_8 as Symbol[][]);
+    expect(results).toMatchObject({ winAmount: 7, freeSpins: 10 });
+    expect(results.winPayLines).toHaveLength(2);
+  });
+
+  it('should have winAmount of 7, freeSpins of 10 and 2 winPayLines (w/ wildcard) when SCREEN_9 is passed as value', () => {
+    const results: SlotScreenResult = getScreenResult(SCREEN_9 as Symbol[][]);
+    expect(results).toMatchObject({ winAmount: 7, freeSpins: 10 });
+    expect(results.winPayLines).toHaveLength(2);
+  });
+
+  it('should have winAmount of 1, and 1winPayLines (w/ wildcard) when SCREEN_10 is passed as value', () => {
+    const results: SlotScreenResult = getScreenResult(SCREEN_10 as Symbol[][]);
+    expect(results).toMatchObject({ winAmount: 1 });
+    expect(results.winPayLines).toHaveLength(1);
+  });
+
+  it('should have winAmount of 8 and bonusFactor of 3 when SCREEN_5 is passed as value', () => {
     const results: SlotScreenResult = getScreenResult(SCREEN_5 as Symbol[][]);
-    expect(results).toMatchObject({ winAmount: -6 });
-    expect(results.winPayLines).toHaveLength(0);
-    expect(results.losePayLines).toHaveLength(1);
+    expect(results).toMatchObject({ winAmount: 8, bonusFactor: 3 });
+    expect(results.winPayLines).toHaveLength(1);
   });
 
   it('should not return any results when SCREEN_6 is passed as value (no matches)', () => {
     const results: SlotScreenResult = getScreenResult(SCREEN_6 as Symbol[][]);
-    expect(results).toMatchObject({ winAmount: 0, freeSpins: 0 });
+    expect(results).toMatchObject({ winAmount: 0, freeSpins: 0, bonusFactor: 0 });
     expect(results.winPayLines).toHaveLength(0);
-    expect(results.losePayLines).toHaveLength(0);
   });
 
-  it('should have winAmount of 217, and 2 winPayLines (w/ bonus wildcards) when SCREEN_7 is passed as value', () => {
+  it('should have winAmount of 213, and 3 winPayLines (w/ bonus wildcards) when SCREEN_7 is passed as value', () => {
     const results: SlotScreenResult = getScreenResult(SCREEN_7 as Symbol[][]);
     expect(results).toMatchObject({ winAmount: 213, freeSpins: 0 });
     expect(results.winPayLines).toHaveLength(3);

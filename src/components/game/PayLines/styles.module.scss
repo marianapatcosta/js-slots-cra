@@ -4,7 +4,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  background-color: rgba($color-black, 0.5);
+  background-color: rgba($color-black, 0.3);
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -63,7 +63,7 @@
       width: 1rem;
       height: 0.25rem;
       content: '';
-      top: 3px;
+      top: 0.25rem;
       bottom: 0;
       margin: auto 0;
       background-color: inherit;

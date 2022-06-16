@@ -3,14 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { Controllers, Reels, WinsDisplay } from '@/components';
 import { ANIMATE_RESULTS_DURATION, ROW_NUMBER } from '@/game-configs';
-import { ModalType, SlotScreenResult, Symbol } from '@/types';
+import { ModalType, Position, SlotScreenResult, Symbol } from '@/types';
 import {
   SPIN_ENDED,
   GAME_RESET,
   GAME_LEFT,
   NEW_SPIN_PREPARED,
   SPAN,
-  BONUS_WILD_CARDS_WON,
 } from '@/store/action-types';
 import {
   getScreenResult,
@@ -23,8 +22,8 @@ import { ModalContext, ModalContextData } from '@/context/ModalContext';
 import { LoseSound, SlotWheelSound, ThemeSound, WinSound } from '@/assets/sounds';
 import { getRandomNumber } from '@/utils';
 import { ReelsContext } from '@/context/ReelsContext';
-import styles from './styles.module.scss';
 import { useSymbolSize } from '@/hooks';
+import styles from './styles.module.scss';
 
 const SlotMachine: React.FC = () => {
   const [reels, setReels] = useState<Symbol[][]>([]);
@@ -102,38 +101,42 @@ const SlotMachine: React.FC = () => {
     [finalSlotScreen]
   );
 
-  const getTimerForNewSpin = useCallback((slotResult: SlotScreenResult): number => {
-    const noResults = Object.entries(slotResult).every(
-      ([key, value]: [string, SlotScreenResult[keyof SlotScreenResult]]) =>
-        !value || (Array.isArray(value) && !value.length)
-    );
+  const getTimerForNewSpin = useCallback(
+    (slotResult: SlotScreenResult): number => {
+      const noResults = Object.entries(slotResult).every(
+        ([_, value]: [string, SlotScreenResult[keyof SlotScreenResult]]) =>
+          !value || (Array.isArray(value) && !value.length)
+      );
 
-    if (isAutoSpinOn && noResults) {
-      return ANIMATE_RESULTS_DURATION / 2;
-    }
+      if (isAutoSpinOn && noResults) {
+        return ANIMATE_RESULTS_DURATION / 2;
+      }
 
-    return noResults ? ANIMATE_RESULTS_DURATION / 5 : ANIMATE_RESULTS_DURATION;
-  }, [isAutoSpinOn]);
+      return noResults ? ANIMATE_RESULTS_DURATION / 5 : ANIMATE_RESULTS_DURATION;
+    },
+    [isAutoSpinOn]
+  );
 
   const onSpinningEnd = useCallback(() => {
     slotWheelSound.pause();
     let slotResult: SlotScreenResult = getScreenResult(finalSlotScreen);
 
+    let bonusWildcardsPositions: Position[] = [];
     if (!slotResult.winAmount && wonBonusWildCards()) {
       const { wildcardsPositions, slotScreenWithWildcards } =
         getScreenWithBonusWildcards(finalSlotScreen);
       setFinalSlotScreens(slotScreenWithWildcards);
       slotResult = getScreenResult(slotScreenWithWildcards);
-      dispatch({ type: BONUS_WILD_CARDS_WON, payload: wildcardsPositions });
+      bonusWildcardsPositions = wildcardsPositions;
     }
-    if (!!slotResult.winPayLines.length) {
-      isSoundOn && winSound.play();
+
+    dispatch({ type: SPIN_ENDED, payload: { slotResult, bonusWildcardsPositions } });
+
+    if (isSoundOn) {
+      const endSound = !!slotResult.winPayLines.length ? winSound : loseSound;
+      endSound.play();
     }
-    if (!!slotResult.losePayLines.length) {
-      isSoundOn && loseSound.play();
-    }
-    const action = { type: SPIN_ENDED, payload: slotResult };
-    dispatch(action);
+    
     const timeToNewSpin: number = getTimerForNewSpin(slotResult);
 
     // shuffle reels for next spinning
@@ -168,12 +171,18 @@ const SlotMachine: React.FC = () => {
     onSpin,
     openModal,
   ]);
-
+  // const worker = new Worker(new URL('../../../workers/shuffle-worker.ts', import.meta.url));
   useEffect(() => {
     const shuffledReels = getShuffledReels();
     setReels(shuffledReels);
     setGameConfigs();
+/*     worker.postMessage('hello');
 
+    worker.onmessage = event => {
+    console.log(777, event)
+      worker.terminate();
+    };
+ */
     return () => {
       dispatch({ type: GAME_LEFT });
     };

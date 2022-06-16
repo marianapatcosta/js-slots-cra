@@ -1,5 +1,5 @@
 import { DEFAULT_BET, INITIAL_CREDITS, PAY_LINES_METADATA } from '@/game-configs';
-import { PayLine } from '@/types';
+import { PayLine, Position, SlotScreenResult } from '@/types';
 import { BET_UPDATED, SPAN, SPIN_ENDED } from '../action-types';
 import { State, reducer as slotMachineReducer } from './slot-machine';
 
@@ -7,13 +7,13 @@ const initialState: State = {
   credits: INITIAL_CREDITS,
   bet: DEFAULT_BET,
   freeSpins: 0,
+  bonusFactor: 0,
   isAutoSpinOn: false,
   isSpinning: false,
   showPayLines: false,
   hasOngoingGame: false,
   resetGameOnMount: null,
   winPayLines: [],
-  losePayLines: [],
   bonusWildcardsPositions: [],
 };
 
@@ -54,11 +54,14 @@ describe('Slot machine reducer', () => {
         { type: SPAN },
         {
           type: SPIN_ENDED,
-          payload: {
-            winAmount: 30,
-            freeSpins: 10,
-            winPayLines: winPayLines,
-            losePayLines: [] as PayLine[],
+          payload: { 
+            slotResult: {
+              winAmount: 30,
+              freeSpins: 10,
+              bonusFactor: 0,
+              winPayLines,
+            },
+            bonusWildcardsPositions: [] as Position[],
           },
         },
         { type: SPAN },
@@ -72,18 +75,38 @@ describe('Slot machine reducer', () => {
   });
 
   describe('end of reels spinning', () => {
-    it('when winAmount is 0 change the credits nor winPayLines in state', () => {
+    it('should not update credits nor winPayLines in state when winAmount is 0', () => {
       const action = {
         type: SPIN_ENDED,
         payload: {
-          winAmount: 0,
-          freeSpins: 0,
-          winPayLines: [] as PayLine[],
-          losePayLines: [] as PayLine[],
+          slotResult: {
+            winAmount: 0,
+            freeSpins: 0,
+            bonusFactor: 0,
+            winPayLines: [] as PayLine[],
+          }, 
+          bonusWildcardsPositions: [] as Position[],
         },
       } as const;
       const state = slotMachineReducer(initialState, action);
       expect(state.credits).toBe(initialState.credits);
+      expect(state.winPayLines).toEqual(initialState.winPayLines);
+      expect(state.isSpinning).toBe(false);
+    });
+
+    it('should triple the winAMount and add it to credits credits when bonusFactor is 3, if bet === 1', () => {
+      const payload = {
+        slotResult: {
+          winAmount: 15,
+          freeSpins: 0,
+          bonusFactor: 3,
+          winPayLines: [] as PayLine[],
+        },
+        bonusWildcardsPositions: [] as Position[],
+      };
+      const action = { type: SPIN_ENDED, payload, } as const;
+      const state = slotMachineReducer(initialState, action);
+      expect(state.credits).toBe(initialState.credits + 15 * 3 );
       expect(state.winPayLines).toEqual(initialState.winPayLines);
       expect(state.isSpinning).toBe(false);
     });

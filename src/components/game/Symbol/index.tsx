@@ -21,7 +21,6 @@ const Symbol: React.FC<SymbolProps> = ({
 }) => {
   const SymbolIcon = symbol.icon;
   const winPayLines: PayLine[] = useSelector((state: State) => state.slotMachine.winPayLines);
-  const losePayLines: PayLine[] = useSelector((state: State) => state.slotMachine.losePayLines);
   const bonusWildcardsPositions: Position[] = useSelector(
     (state: State) => state.slotMachine.bonusWildcardsPositions
   );
@@ -45,13 +44,12 @@ const Symbol: React.FC<SymbolProps> = ({
     if (symbolIndex === null) {
       return;
     }
-    const lines: PayLine[] = [...winPayLines, ...losePayLines];
-    const payLinesContainingTheSymbol: PayLine[] = lines.filter(({ positions }: PayLine) =>
+    const payLinesContainingTheSymbol: PayLine[] = winPayLines.filter(({ positions }: PayLine) =>
       positions.some(({ reel, row }: Position) => reel === reelIndex && row === symbolIndex)
     );
 
     setAnimatedColors(payLinesContainingTheSymbol.map(({ color }) => color));
-  }, [winPayLines, losePayLines, reelIndex, symbolIndex]);
+  }, [winPayLines, reelIndex, symbolIndex]);
 
   useEffect(() => {
     if (symbolIndex === null) {

@@ -1,13 +1,13 @@
 {
   "about": {
-    "description": "JS Slots Machine follows the general rules of slot games, i.e, it aims to make the symbols spin and then check if you have combinations of 3 or more equal symbols displayed at one of the 9 possible winning lines.",
+    "description": "JS Slots Machine is composed of 5 reels (with more thatn 30 symbols each) and 3 rows. It follows the general rules of slot games, i.e, it aims to make the symbols spin and check if you have combinations of 3 or more equal symbols displayed at one of the 9 possible winning lines.",
     "specialSymbols": "Special Symbols",
     "explosive": "Explosive",
-    "explosiveDescription": "The downside of the game: A line of 3 or more Explosive symbols makes you lose credits.",
+    "explosiveDescription": "Explosive symbols combined in a line of 3-5 symbols multiply your win amount by 3-5, respectively.",
     "scatter": "Scatter",
-    "scatterDescription": "A line of 3 or more Scatter symbols offers you 10 free spins",
+    "scatterDescription": "Scatter symbols combined in a line of 3 or more offers you 10 free spins.",
     "wildcard": "WildCard",
-    "wildcardDescription": "WildCard symbol can take the place of any other game symbol, increasing your winning chances. At the end of each spin, there is a chance to win extra wildcards.",
+    "wildcardDescription": "WildCard symbol can take the place of any other game symbol, increasing your winning chances. At the end of each spin, there is a chance to win a bonus of wildcards.",
     "title": "About"
   },
   "controllers": {

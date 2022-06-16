@@ -14,4 +14,3 @@ export const GAME_RESET = 'gameReset';
 export const RESET_MODAL_DISMISSED = 'resetModalDismissed';
 export const GAME_LEFT = 'gameLeft';
 export const NEW_SPIN_PREPARED = 'newSpinPrepared';
-export const BONUS_WILD_CARDS_WON = 'bonusWildCardsWon';
