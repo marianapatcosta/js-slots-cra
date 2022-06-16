@@ -29,7 +29,6 @@ const Controllers: React.FC<ControllersProps> = ({ isSpinning, onSpin }) => {
   const isAutoSpinOn: boolean = useSelector((state: State) => state.slotMachine.isAutoSpinOn);
   const showPayLines: boolean = useSelector((state: State) => state.slotMachine.showPayLines);
   const winPayLines: PayLine[] = useSelector((state: State) => state.slotMachine.winPayLines);
-  const bonusFactor: number = useSelector((state: State) => state.slotMachine.bonusFactor);
   const dispatch = useDispatch();
 
   const coinsSound: HTMLAudioElement = new Audio(CoinsSound);

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { nanoid } from 'nanoid';
 import { useSelector } from 'react-redux';
 import { PayLines, Reel } from '@/components';
@@ -15,7 +15,9 @@ interface ReelsProps {
 const Reels: React.FunctionComponent<ReelsProps> = ({ reels }) => {
   const animationDuration =
     getRandomNumber(MIN_SPIN_ANIMATION_DURATION, MAX_SPIN_ANIMATION_DURATION) * Math.random();
-  const bonusWildCardsPositions: Position[] = useSelector((state: State) => state.slotMachine.bonusWildcardsPositions);
+  const bonusWildCardsPositions: Position[] = useSelector(
+    (state: State) => state.slotMachine.bonusWildcardsPositions
+  );
   const bonusFactor: number = useSelector((state: State) => state.slotMachine.bonusFactor);
   const bonusText: string = useMemo(() => {
     if (!!bonusWildCardsPositions.length && !!bonusFactor) {

@@ -80,7 +80,9 @@ export const wonBonusWildCards = (): boolean => Math.random() < 0.3;
 
 // not matched symbols are different and none of them is wildcard
 const areSymbolsNotMatched = (symbolAType: SymbolType, symbolB: Symbol): boolean =>
-  symbolAType !== symbolB.type && (symbolAType !== WILDCARD_METADATA.type && symbolB.type !== WILDCARD_METADATA.type);
+  symbolAType !== symbolB.type &&
+  symbolAType !== WILDCARD_METADATA.type &&
+  symbolB.type !== WILDCARD_METADATA.type;
 
 export const getScreenWithBonusWildcards = (
   slotScreen: Symbol[][]
@@ -113,16 +115,16 @@ const getPayLineResult = (slotScreen: Symbol[][], payLine: PayLine): PayLineResu
       if (numberOfSymbolsInLine >= MIN_MATCH_SEQUENCE_NUMBER) {
         break;
       }
-      
-      // If no win sequence yet, check if previous symbol is a Wildcard, which was not set as currentSymbol in the previous iteration 
+
+      // If no win sequence yet, check if previous symbol is a Wildcard, which was not set as currentSymbol in the previous iteration
       // because regular symbols are preferentially stored instead, to be able to check if the next symbols are a match with them
 
-      // if index of previous symbol is higher than MIN_MATCH_SEQUENCE_NUMBER, there is no chance to match a line 
+      // if index of previous symbol is higher than MIN_MATCH_SEQUENCE_NUMBER, there is no chance to match a line
       // even if we have a wildcard in the previous posiiton, so break
       if (positionIndex - 1 > MIN_MATCH_SEQUENCE_NUMBER - 1) {
         break;
       }
-      
+
       const previousPosition: Position = payLine.positions[positionIndex - 1];
       const previousSymbol: Symbol = slotScreen[previousPosition.reel][previousPosition.row];
       // Check if previous symbol is wildcard, so the new line can start being evaluated from the wildcard position
@@ -132,12 +134,12 @@ const getPayLineResult = (slotScreen: Symbol[][], payLine: PayLine): PayLineResu
         initialPositionIndex = positionIndex - 1;
         continue;
       }
-      
-      // if no wildcard in previous position and currentSymbolIndex is higher than MIN_MATCH_SEQUENCE_NUMBER, there is no chance to match, so break 
+
+      // if no wildcard in previous position and currentSymbolIndex is higher than MIN_MATCH_SEQUENCE_NUMBER, there is no chance to match, so break
       if (positionIndex > MIN_MATCH_SEQUENCE_NUMBER - 1) {
         break;
       }
-      
+
       // if there is still a chance to match, adjust initial checking variables and continue to next iteration
       currentSymbolType = symbol.type;
       numberOfSymbolsInLine = 1;
@@ -185,10 +187,7 @@ export const getScreenResult = (slotScreen: Symbol[][]): SlotScreenResult => {
       freeSpins += FREE_SPINS_NUMBER;
     }
 
-    const winFactor: number = findWinFactor(
-      currentSymbolType as SymbolType,
-      numberOfSymbolsInLine
-    );
+    const winFactor: number = findWinFactor(currentSymbolType as SymbolType, numberOfSymbolsInLine);
     winAmount += winFactor;
     winPayLines.push({
       ...payLine,
