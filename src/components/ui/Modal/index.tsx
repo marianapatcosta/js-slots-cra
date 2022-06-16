@@ -58,7 +58,6 @@ const Modal: React.FC<ModalProps> = ({ title, description, showModal, children, 
         enterActive: styles['modal__overlay-enter-active'],
         enterDone: styles['modal__overlay-enter-done'],
         exitActive: styles['modal__overlay-exit-active'],
-        exitDone: styles['modal__overlay-exit-active'],
       }}
       nodeRef={modalRef}
     >

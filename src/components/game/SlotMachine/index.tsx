@@ -3,14 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { Controllers, Reels, WinsDisplay } from '@/components';
 import { ANIMATE_RESULTS_DURATION, ROW_NUMBER } from '@/game-configs';
-import { ModalType, SlotScreenResult, Symbol } from '@/types';
+import { ModalType, Position, SlotScreenResult, Symbol } from '@/types';
 import {
   SPIN_ENDED,
   GAME_RESET,
   GAME_LEFT,
   NEW_SPIN_PREPARED,
   SPAN,
-  BONUS_WILD_CARDS_WON,
 } from '@/store/action-types';
 import {
   getScreenResult,
@@ -122,20 +121,22 @@ const SlotMachine: React.FC = () => {
     slotWheelSound.pause();
     let slotResult: SlotScreenResult = getScreenResult(finalSlotScreen);
 
+    let bonusWildcardsPositions: Position[] = [];
     if (!slotResult.winAmount && wonBonusWildCards()) {
       const { wildcardsPositions, slotScreenWithWildcards } =
         getScreenWithBonusWildcards(finalSlotScreen);
       setFinalSlotScreens(slotScreenWithWildcards);
       slotResult = getScreenResult(slotScreenWithWildcards);
-      dispatch({ type: BONUS_WILD_CARDS_WON, payload: wildcardsPositions });
+      bonusWildcardsPositions = wildcardsPositions;
     }
-    if (!!slotResult.winPayLines.length) {
-      isSoundOn && winSound.play();
+
+    dispatch({ type: SPIN_ENDED, payload: { slotResult, bonusWildcardsPositions } });
+
+    if (isSoundOn) {
+      const endSound = !!slotResult.winPayLines.length ? winSound : loseSound;
+      endSound.play();
     }
-    if (!!slotResult.losePayLines.length) {
-      isSoundOn && loseSound.play();
-    }
-    dispatch({ type: SPIN_ENDED, payload: slotResult });
+    
     const timeToNewSpin: number = getTimerForNewSpin(slotResult);
 
     // shuffle reels for next spinning
