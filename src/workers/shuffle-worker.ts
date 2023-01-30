@@ -1,4 +1,3 @@
-import { getRandomNumber } from '@/utils';
 import { getShuffledReels } from '../game-utils';
 import { Symbol } from '../types';
 
