@@ -14,7 +14,7 @@ JS Slot Machine is a Progressive web app with a regular slot machine game that h
 - AutoSpin capability;
 - Free spinnings;
 - Bonus WildCards;
-- Big winning due to win amout multipliers;
+- Big winning due to win amount multipliers;
 - Special Symbols;
 
 - ![image](https://user-images.githubusercontent.com/43031902/173920878-d7fe0088-e3c7-486e-a544-32e149eabd07.png)

@@ -46,7 +46,7 @@
     -o-border-radius: 0.25rem;
     color: var(--color-font);
     font-family: $font-primary;
-    width: 90%;
+    min-width: 90%;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -110,6 +110,7 @@
   .modal {
     &__content {
       width: max-content;
+      min-width: 20rem;
     }
   }
 }

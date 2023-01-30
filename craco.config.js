@@ -5,6 +5,15 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, 'src'),
     },
+    module: {
+      rules: [
+        {
+          test: /\.ts$/,
+          use: 'ts-loader',
+          exclude: /node_modules/,
+        },
+      ],
+    },
   },
   style: {
     sass: {
